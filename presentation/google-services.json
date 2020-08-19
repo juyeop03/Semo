@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "306321335728",
+    "firebase_url": "https://semo-1858d.firebaseio.com",
+    "project_id": "semo-1858d",
+    "storage_bucket": "semo-1858d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306321335728:android:ffc94cd4a3dc6a05aea275",
+        "android_client_info": {
+          "package_name": "kr.hs.dgsw.stac.semo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306321335728-l5bvqodhetusd0of8hhjc49450d5i83i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.hs.dgsw.stac.semo",
+            "certificate_hash": "a51e0a6f2d5158802d27da2ae8d9716bee557edc"
+          }
+        },
+        {
+          "client_id": "306321335728-9orb3pfbish4sson8fieag9cc07bd8ru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACqPKcnG0G34G0Uii414zwASuch7KvLwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306321335728-9orb3pfbish4sson8fieag9cc07bd8ru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
