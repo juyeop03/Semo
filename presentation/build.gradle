@@ -46,7 +46,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-
     implementation project(":data")
     implementation project(":domain")
 
@@ -55,6 +54,9 @@ dependencies {
     implementation "com.google.firebase:firebase-database:$rootProject.firebase_database_version"
     implementation "com.google.firebase:firebase-auth:$rootProject.firebase_auth_version"
     implementation "com.google.firebase:firebase-firestore:$rootProject.firebase_firestore_version"
+
+    // Google Auth
+    implementation "com.google.android.gms:play-services-auth:$rootProject.google_auth_version"
 
     // ViewModel & LiveData
     implementation "androidx.lifecycle:lifecycle-viewmodel:$rootProject.lifecycle_version"

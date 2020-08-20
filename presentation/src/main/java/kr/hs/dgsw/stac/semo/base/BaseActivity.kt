@@ -33,11 +33,6 @@ abstract class BaseActivity <VB : ViewDataBinding, VM : BaseViewModel> : AppComp
         binding.executePendingBindings()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        if(::binding.isInitialized) binding.unbind()
-    }
-
     @LayoutRes
     private fun layoutRes() : Int{
         val split = ((Objects.requireNonNull<Type>(javaClass.genericSuperclass) as ParameterizedType).actualTypeArguments[0] as Class<*>)

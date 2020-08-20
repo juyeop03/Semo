@@ -10,11 +10,16 @@ class SignInViewModel : BaseViewModel() {
     var pw = MutableLiveData<String>()
 
     val onSignInEvent = SingleLiveEvent<Unit>()
+    val onGoogleSignInEvent = SingleLiveEvent<Unit>()
     val onSignUpEvent = SingleLiveEvent<Unit>()
 
     fun signInEvent() {
         onSignInEvent.call()
     }
+    fun googleSignInEvent() {
+        onGoogleSignInEvent.call()
+    }
+
     fun signUpEvent() {
         onSignUpEvent.call()
     }

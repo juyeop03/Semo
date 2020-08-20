@@ -1,6 +1,5 @@
 package kr.hs.dgsw.stac.semo.view
 
-
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityMainBinding
 import kr.hs.dgsw.stac.semo.viewmodel.MainViewModel

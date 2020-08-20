@@ -123,6 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:onClick="@{() -> viewModel.googleSignInEvent()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout1">
@@ -133,6 +134,7 @@
                 android:layout_height="40dp"
                 android:orientation="horizontal"
                 app:cardCornerRadius="3dp"
+                app:cardBackgroundColor="#D14E42"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -149,13 +151,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Google로 로그인"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/white" />
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="250dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="15dp"
+                android:visibility="gone"
                 app:cardBackgroundColor="#385999"
                 app:cardCornerRadius="3dp"
                 app:layout_constraintEnd_toEndOf="parent"
