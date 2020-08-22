@@ -16,6 +16,7 @@ import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivitySignInBinding
 import kr.hs.dgsw.stac.semo.viewmodel.SignInViewModel
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityNoFinish
+import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
@@ -53,7 +54,10 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
         val firebaseAuth = FirebaseAuth.getInstance()
         firebaseAuth.signInWithEmailAndPassword(viewModel.email.value.toString(), viewModel.pw.value.toString())
             .addOnCompleteListener { task ->
-                if (task.isSuccessful) Toast.makeText(applicationContext, "로그인을 성공하였습니다.", Toast.LENGTH_SHORT).show()
+                if (task.isSuccessful) {
+                    Toast.makeText(applicationContext, "로그인을 성공하였습니다.", Toast.LENGTH_SHORT).show()
+                    startActivityWithFinish(applicationContext, MainActivity::class.java)
+                }
                 else Toast.makeText(applicationContext, "로그인을 실패하였습니다.", Toast.LENGTH_SHORT).show()
             }
     }
@@ -80,6 +84,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
                 if (task.isSuccessful) {
                     Toast.makeText(applicationContext, "로그인을 성공하였습니다.", Toast.LENGTH_SHORT).show()
                     setUserData(account)
+                    startActivityWithFinish(applicationContext, MainActivity::class.java)
                 } else Toast.makeText(applicationContext, "로그인을 실패하였습니다.", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener {

@@ -9,5 +9,6 @@ fun AppCompatActivity.startActivityNoFinish(context: Context, activity: Class<*>
 }
 
 fun AppCompatActivity.startActivityWithFinish(context: Context, activity: Class<*>) {
-    startActivity(Intent(context, activity).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+    startActivity(Intent(context, activity).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP))
+    this.finish()
 }
