@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.hs.dgsw.stac.semo.viewmodel.CameraKitViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.view.CameraKitActivity">
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@android:color/black"
+            android:layout_alignParentTop="true"/>
+
+        <com.camerakit.CameraKitView
+            android:id="@+id/cameraKitView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/linearLayout"
+            android:layout_below="@id/frameLayout"
+            android:adjustViewBounds="true"
+            android:keepScreenOn="true"
+            app:camera_flash="off"
+            app:camera_facing="back"
+            app:camera_focus="continuous"
+            app:camera_permissions="camera"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="-1dp"
+            android:background="@android:color/black"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/detectButton"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:onClick="@{() -> viewModel.detectEvent()}"
+                android:src="@drawable/ic_baseline_radio_button_checked_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@android:color/white"
+                tools:ignore="ContentDescription" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</layout>

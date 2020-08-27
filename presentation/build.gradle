@@ -33,6 +33,10 @@ android {
     dataBinding {
         enabled = true
     }
+
+    aaptOptions {
+        noCompress 'tflite'
+    }
 }
 
 dependencies {
@@ -71,4 +75,12 @@ dependencies {
     implementation "org.koin:koin-androidx-scope:$rootProject.koin_version"
     implementation "org.koin:koin-androidx-viewmodel:$rootProject.koin_version"
     implementation "org.koin:koin-androidx-ext:$rootProject.koin_version"
+
+    // CameraKit
+    implementation "com.camerakit:camerakit:$rootProject.camerakit_version"
+    implementation "com.camerakit:jpegkit:$rootProject.jpegkit_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.corutines_version"
+
+    // TensorFlow
+    implementation 'org.tensorflow:tensorflow-lite:+'
 }

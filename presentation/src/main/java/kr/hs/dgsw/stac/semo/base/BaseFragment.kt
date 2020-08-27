@@ -35,7 +35,7 @@ abstract class BaseFragment <VB : ViewDataBinding, VM : BaseViewModel> : Fragmen
         init()
     }
 
-    fun performDataBinding(){
+    private fun performDataBinding(){
         binding.setVariable(BR.viewModel, viewModel)
         binding.lifecycleOwner = this
         binding.executePendingBindings()

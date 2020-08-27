@@ -17,6 +17,10 @@ buildscript {
         koin_version = '2.0.1'
 
         google_auth_version = "18.1.0"
+
+        camerakit_version = "1.0.0-beta3.11"
+        jpegkit_version = "0.1.0"
+        corutines_version = "1.0.0"
     }
 
     repositories {
