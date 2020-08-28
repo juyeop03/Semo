@@ -1,7 +1,6 @@
-package kr.hs.dgsw.stac.semo.widget.recyclerview
+package kr.hs.dgsw.stac.semo.widget.recyclerview.adpater
 
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil

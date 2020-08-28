@@ -1,8 +1,8 @@
 package kr.hs.dgsw.stac.semo.view.view
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -12,12 +12,12 @@ import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityCameraKitBinding
 import kr.hs.dgsw.stac.semo.view.dialog.NextDialog
 import kr.hs.dgsw.stac.semo.viewmodel.CameraKitViewModel
+import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtra
 import kr.hs.dgsw.stac.semo.widget.tensorflow.Classifier
 import kr.hs.dgsw.stac.semo.widget.tensorflow.TensorFlowImageClassifier
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import java.lang.Exception
 import java.lang.RuntimeException
-import java.util.concurrent.Executors
 
 class CameraKitActivity : BaseActivity<ActivityCameraKitBinding, CameraKitViewModel>() {
 
@@ -55,7 +55,7 @@ class CameraKitActivity : BaseActivity<ActivityCameraKitBinding, CameraKitViewMo
                             val dialog = NextDialog()
                             dialog.show(supportFragmentManager)
                             dialog.onMoveEvent.observe(this@CameraKitActivity, Observer {
-                                // 상세 정보 화면으로 이동하기
+                                startActivityWithExtra(Intent(applicationContext, InfoActivity::class.java).putExtra("laundryList", laundryList))
                             })
                         }
                     }

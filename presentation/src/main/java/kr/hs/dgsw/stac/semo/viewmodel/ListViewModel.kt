@@ -3,7 +3,7 @@ package kr.hs.dgsw.stac.semo.viewmodel
 import kr.hs.dgsw.stac.semo.R
 import kr.hs.dgsw.stac.semo.base.BaseViewModel
 import kr.hs.dgsw.stac.semo.widget.SingleLiveEvent
-import kr.hs.dgsw.stac.semo.widget.recyclerview.SymbolLaundryAdapter
+import kr.hs.dgsw.stac.semo.widget.recyclerview.adpater.SymbolLaundryAdapter
 
 class ListViewModel : BaseViewModel() {
 

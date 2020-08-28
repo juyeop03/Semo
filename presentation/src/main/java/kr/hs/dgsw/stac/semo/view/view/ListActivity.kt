@@ -1,9 +1,12 @@
 package kr.hs.dgsw.stac.semo.view.view
 
+import android.content.Intent
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityListBinding
 import kr.hs.dgsw.stac.semo.viewmodel.ListViewModel
+import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtra
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class ListActivity : BaseActivity<ActivityListBinding, ListViewModel>() {
@@ -23,6 +26,12 @@ class ListActivity : BaseActivity<ActivityListBinding, ListViewModel>() {
                 for (select in viewModel.ironingListAdapter.selectSymbolList) laundryList.add(select)
                 for (select in viewModel.dryCleaningListAdapter.selectSymbolList) laundryList.add(select)
                 for (select in viewModel.dryListAdapter.selectSymbolList) laundryList.add(select)
+
+                if (laundryList.size != 0) {
+                    startActivityWithExtra(Intent(applicationContext, InfoActivity::class.java).putExtra("laundryList", laundryList))
+                } else {
+                    Toast.makeText(applicationContext, "최소 한 개 이상의 세탁 라벨을 선택해주세요!", Toast.LENGTH_SHORT).show()
+                }
             })
         }
     }

@@ -12,6 +12,7 @@ val viewModelModule = module {
     viewModel { SelectViewModel() }
     viewModel { CameraKitViewModel() }
     viewModel { ListViewModel() }
+    viewModel { InfoViewModel() }
 
     viewModel { NextViewModel() }
 }

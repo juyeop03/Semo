@@ -79,6 +79,7 @@ dependencies {
     // CameraKit
     implementation "com.camerakit:camerakit:$rootProject.camerakit_version"
     implementation "com.camerakit:jpegkit:$rootProject.jpegkit_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.stdlib_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.corutines_version"
 
     // TensorFlow

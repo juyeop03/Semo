@@ -32,6 +32,7 @@
             android:keepScreenOn="true"
             app:camera_flash="off"
             app:camera_facing="back"
+            app:camera_zoomFactor="1"
             app:camera_focus="continuous"
             app:camera_permissions="camera"/>
 
@@ -45,7 +46,7 @@
 
             <ImageButton
                 android:id="@+id/detectButton"
-                android:layout_width="60dp"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:onClick="@{() -> viewModel.detectEvent()}"
                 android:src="@drawable/ic_baseline_radio_button_checked_24"

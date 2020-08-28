@@ -20,6 +20,7 @@ buildscript {
 
         camerakit_version = "1.0.0-beta3.11"
         jpegkit_version = "0.1.0"
+        stdlib_version = "1.3.0"
         corutines_version = "1.0.0"
     }
 

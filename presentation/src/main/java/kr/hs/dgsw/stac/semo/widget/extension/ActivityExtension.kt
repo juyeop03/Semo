@@ -12,3 +12,8 @@ fun AppCompatActivity.startActivityWithFinish(context: Context, activity: Class<
     startActivity(Intent(context, activity).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP))
     this.finish()
 }
+
+fun AppCompatActivity.startActivityWithExtra(intent: Intent) {
+    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP))
+    this.finish()
+}
