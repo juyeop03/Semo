@@ -47,4 +47,8 @@ abstract class BaseActivity <VB : ViewDataBinding, VM : BaseViewModel> : AppComp
         }
         return R.layout::class.java.getField(name.toString()).getInt(R.layout::class.java)
     }
+
+    override fun onBackPressed() {
+        this.finish()
+    }
 }

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import com.camerakit.CameraKitView
 import kotlinx.android.synthetic.main.activity_camera_kit.*
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityCameraKitBinding
@@ -39,24 +40,26 @@ class CameraKitActivity : BaseActivity<ActivityCameraKitBinding, CameraKitViewMo
     override fun observerViewModel() {
         with(viewModel) {
             onDetectEvent.observe(this@CameraKitActivity, Observer {
-                cameraKitView.captureImage { cameraKitView, bytes ->
-                    var bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-                    bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE, INPUT_SIZE, false)
+                cameraKitView.captureImage(object : CameraKitView.ImageCallback {
+                    override fun onImage(p0: CameraKitView?, p1: ByteArray?) {
+                        var bitmap = BitmapFactory.decodeByteArray(p1, 0, p1!!.size)
+                        bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE, INPUT_SIZE, false)
 
-                    val results = classifier.recognizeImage(bitmap)
+                        val results = classifier.recognizeImage(bitmap)
 
-                    if (results[0].title == "null") {
-                        Toast.makeText(applicationContext, "이미지 인식 실패, 다시 촬영해주세요!", Toast.LENGTH_SHORT).show()
-                    } else {
-                        laundryList.add(results[0].title)
+                        if (results[0].title == "null") {
+                            Toast.makeText(applicationContext, "이미지 인식 실패, 다시 촬영해주세요!", Toast.LENGTH_SHORT).show()
+                        } else {
+                            laundryList.add(results[0].title)
 
-                        val dialog = NextDialog()
-                        dialog.show(supportFragmentManager)
-                        dialog.onMoveEvent.observe(this@CameraKitActivity, Observer {
-                            // 상세 정보 화면으로 이동하기
-                        })
+                            val dialog = NextDialog()
+                            dialog.show(supportFragmentManager)
+                            dialog.onMoveEvent.observe(this@CameraKitActivity, Observer {
+                                // 상세 정보 화면으로 이동하기
+                            })
+                        }
                     }
-                }
+                })
             })
         }
     }
@@ -65,9 +68,14 @@ class CameraKitActivity : BaseActivity<ActivityCameraKitBinding, CameraKitViewMo
     private fun initTensorFlowAndLoadModel() {
         try {
             classifier = TensorFlowImageClassifier().create(assets, MODEL_PATH, LABEL_PATH, INPUT_SIZE, QUANT)
+            makeDetectButtonVisible()
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
+    }
+
+    private fun makeDetectButtonVisible() {
+        runOnUiThread { detectButton.visibility = View.VISIBLE }
     }
 
     override fun onStart() {

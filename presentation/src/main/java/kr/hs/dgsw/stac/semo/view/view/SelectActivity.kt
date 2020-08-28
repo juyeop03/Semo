@@ -22,7 +22,7 @@ class SelectActivity : BaseActivity<ActivitySelectBinding, SelectViewModel>() {
                 startActivityNoFinish(applicationContext, CameraKitActivity::class.java)
             })
             onSelectEvent.observe(this@SelectActivity, Observer {
-                // 선택 화면으로 이동
+                startActivityNoFinish(applicationContext, ListActivity::class.java)
             })
         }
     }
