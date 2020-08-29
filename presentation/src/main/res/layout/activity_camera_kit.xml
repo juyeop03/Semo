@@ -30,11 +30,11 @@
             android:layout_below="@id/frameLayout"
             android:adjustViewBounds="true"
             android:keepScreenOn="true"
-            app:camera_flash="off"
             app:camera_facing="back"
-            app:camera_zoomFactor="1"
+            app:camera_flash="off"
             app:camera_focus="continuous"
-            app:camera_permissions="camera"/>
+            app:camera_permissions="storage|camera"
+            app:camera_zoomFactor="1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
