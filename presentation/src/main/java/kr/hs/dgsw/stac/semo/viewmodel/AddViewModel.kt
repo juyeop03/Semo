@@ -10,13 +10,14 @@ class AddViewModel : BaseViewModel() {
     val selectSymbolAdapter = SelectSymbolAdapter()
     var laundryList = ArrayList<String>()
 
-    val date = MutableLiveData<String>()
-    val name = MutableLiveData<String>()
-    val memo = MutableLiveData<String>()
-    val image = MutableLiveData<String>()
+    var date = MutableLiveData<String>()
+    var title = MutableLiveData<String>()
+    var content = MutableLiveData<String>()
+    var imageUrl = MutableLiveData<String>()
 
     val onCameraEvent = SingleLiveEvent<Unit>()
     val onSaveEvent = SingleLiveEvent<Unit>()
+    val onFailEvent = SingleLiveEvent<Unit>()
 
     fun setSelectSymbolList() {
         selectSymbolAdapter.setList(laundryList)
@@ -26,8 +27,8 @@ class AddViewModel : BaseViewModel() {
     fun cameraEvent() {
         onCameraEvent.call()
     }
-
     fun saveEvent() {
-        onSaveEvent.call()
+        if (title.value != null && content.value != null) onSaveEvent.call()
+        else onFailEvent.call()
     }
 }
