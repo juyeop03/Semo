@@ -59,6 +59,7 @@ dependencies {
     implementation "com.google.firebase:firebase-database:$rootProject.firebase_database_version"
     implementation "com.google.firebase:firebase-auth:$rootProject.firebase_auth_version"
     implementation "com.google.firebase:firebase-firestore:$rootProject.firebase_firestore_version"
+    implementation "com.google.firebase:firebase-storage:$rootProject.firebase_storage_version"
 
     // Google Auth
     implementation "com.google.android.gms:play-services-auth:$rootProject.google_auth_version"

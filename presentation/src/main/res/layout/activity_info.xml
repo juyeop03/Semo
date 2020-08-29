@@ -55,28 +55,19 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_info_laundry" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayout2"
+
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
+                    android:text="저장하기"
+                    android:textColor="#FFFFFF"
+                    android:background="@color/mainColor"
                     android:layout_marginTop="25dp"
+                    android:layout_marginStart="25dp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginBottom="25dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="저장하기"
-                        android:textColor="@color/mainColor"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </LinearLayout>
+                    android:textStyle="bold"
+                    android:onClick="@{() -> viewModel.saveEvent()}"/>
 
             </LinearLayout>
         </ScrollView>

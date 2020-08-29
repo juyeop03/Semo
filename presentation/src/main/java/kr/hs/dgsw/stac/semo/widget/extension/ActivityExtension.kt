@@ -17,3 +17,7 @@ fun AppCompatActivity.startActivityWithExtra(intent: Intent) {
     startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP))
     this.finish()
 }
+
+fun AppCompatActivity.startActivityWithExtraNoFinish(intent: Intent) {
+    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP))
+}

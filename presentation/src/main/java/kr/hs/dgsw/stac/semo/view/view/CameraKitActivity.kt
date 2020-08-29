@@ -1,6 +1,7 @@
 package kr.hs.dgsw.stac.semo.view.view
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.View
@@ -12,6 +13,7 @@ import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityCameraKitBinding
 import kr.hs.dgsw.stac.semo.view.dialog.NextDialog
 import kr.hs.dgsw.stac.semo.viewmodel.CameraKitViewModel
+import kr.hs.dgsw.stac.semo.widget.`object`.ImageObject
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtra
 import kr.hs.dgsw.stac.semo.widget.tensorflow.Classifier
 import kr.hs.dgsw.stac.semo.widget.tensorflow.TensorFlowImageClassifier
@@ -29,11 +31,13 @@ class CameraKitActivity : BaseActivity<ActivityCameraKitBinding, CameraKitViewMo
     private val QUANT = false
 
     private val laundryList = ArrayList<String>()
+    private var onCameraEvent = 0
 
     override val viewModel: CameraKitViewModel
         get() = getViewModel(CameraKitViewModel::class)
 
     override fun init() {
+        onCameraEvent = intent.getIntExtra("onCameraEvent", 0)
         initTensorFlowAndLoadModel()
     }
 
@@ -42,21 +46,28 @@ class CameraKitActivity : BaseActivity<ActivityCameraKitBinding, CameraKitViewMo
             onDetectEvent.observe(this@CameraKitActivity, Observer {
                 cameraKitView.captureImage(object : CameraKitView.ImageCallback {
                     override fun onImage(p0: CameraKitView?, p1: ByteArray?) {
-                        var bitmap = BitmapFactory.decodeByteArray(p1, 0, p1!!.size)
-                        bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE, INPUT_SIZE, false)
+                        if (onCameraEvent == 0) {
+                            ImageObject.byteArray = ByteArray(0)
 
-                        val results = classifier.recognizeImage(bitmap)
+                            var bitmap = BitmapFactory.decodeByteArray(p1, 0, p1!!.size)
+                            bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE, INPUT_SIZE, false)
 
-                        if (results[0].title == "null") {
-                            Toast.makeText(applicationContext, "이미지 인식 실패, 다시 촬영해주세요!", Toast.LENGTH_SHORT).show()
+                            val results = classifier.recognizeImage(bitmap)
+
+                            if (results[0].title == "null") {
+                                Toast.makeText(applicationContext, "이미지 인식 실패, 다시 촬영해주세요!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                laundryList.add(results[0].title)
+
+                                val dialog = NextDialog()
+                                dialog.show(supportFragmentManager)
+                                dialog.onMoveEvent.observe(this@CameraKitActivity, Observer {
+                                    startActivityWithExtra(Intent(applicationContext, InfoActivity::class.java).putExtra("laundryList", laundryList))
+                                })
+                            }
                         } else {
-                            laundryList.add(results[0].title)
-
-                            val dialog = NextDialog()
-                            dialog.show(supportFragmentManager)
-                            dialog.onMoveEvent.observe(this@CameraKitActivity, Observer {
-                                startActivityWithExtra(Intent(applicationContext, InfoActivity::class.java).putExtra("laundryList", laundryList))
-                            })
+                            ImageObject.byteArray = p1!!
+                            onBackPressed()
                         }
                     }
                 })

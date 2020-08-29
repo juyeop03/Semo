@@ -4,28 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import kr.hs.dgsw.stac.domain.LaundryInfoModel
 import kr.hs.dgsw.stac.semo.R
-import kr.hs.dgsw.stac.semo.databinding.ItemInfoLaundryBinding
-import kr.hs.dgsw.stac.semo.widget.recyclerview.viewmodel.InfoLaundryViewModel
+import kr.hs.dgsw.stac.semo.databinding.ItemSelectSymbolBinding
 
-class InfoLaundryAdapter : RecyclerView.Adapter<InfoLaundryAdapter.ViewHolder>() {
+class SelectSymbolAdapter : RecyclerView.Adapter<SelectSymbolAdapter.ViewHolder>() {
 
-    private var laundryList = ArrayList<LaundryInfoModel>()
+    private var laundryList = ArrayList<String>()
 
-    fun setList(laundryList: ArrayList<LaundryInfoModel>) {
+    fun setList(laundryList: ArrayList<String>) {
         this.laundryList = laundryList
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            DataBindingUtil.inflate(
-                LayoutInflater.from(parent.context),
-                R.layout.item_info_laundry,
-                parent,
-                false
-            )
-        )
+        return ViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_select_symbol, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -74,14 +65,11 @@ class InfoLaundryAdapter : RecyclerView.Adapter<InfoLaundryAdapter.ViewHolder>()
         return R.drawable.img_water1
     }
 
-    class ViewHolder(val binding: ItemInfoLaundryBinding) : RecyclerView.ViewHolder(binding.root) {
-        private val infoLaundryAdapter = InfoLaundryAdapter()
-        private val viewModel = InfoLaundryViewModel()
+    class ViewHolder(val binding: ItemSelectSymbolBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val selectSymbolAdapter = SelectSymbolAdapter()
 
-        fun bind(model: LaundryInfoModel) {
-            viewModel.bind(model)
-            binding.imageView.setImageResource(infoLaundryAdapter.checkData(model.name))
-            binding.viewModel = viewModel
+        fun bind(laundry: String) {
+            binding.imageView.setImageResource(selectSymbolAdapter.checkData(laundry))
         }
     }
 }

@@ -13,6 +13,7 @@ val viewModelModule = module {
     viewModel { CameraKitViewModel() }
     viewModel { ListViewModel() }
     viewModel { InfoViewModel() }
+    viewModel { AddViewModel() }
 
     viewModel { NextViewModel() }
 }
