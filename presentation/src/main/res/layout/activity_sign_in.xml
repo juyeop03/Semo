@@ -86,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="로그인"
+                    android:text="@string/text_signIn"
                     android:textColor="#FFFFFF" />
             </com.google.android.material.card.MaterialCardView>
 
@@ -103,13 +103,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="아직 회원이 아니신가요?" />
+                    android:text="@string/text_signup1" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
-                    android:text="회원가입"
+                    android:text="@string/text_signup2"
                     android:onClick="@{() -> viewModel.signUpEvent()}"
                     android:textColor="#3F8EBF"
                     android:textStyle="bold" />
@@ -148,7 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Google로 로그인"
+                    android:text="@string/text_google_signIn"
                     android:textColor="@android:color/white" />
             </com.google.android.material.card.MaterialCardView>
 

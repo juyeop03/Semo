@@ -16,6 +16,7 @@ import kr.hs.dgsw.stac.semo.databinding.ActivityAddBinding
 import kr.hs.dgsw.stac.semo.viewmodel.AddViewModel
 import kr.hs.dgsw.stac.semo.widget.`object`.ImageObject
 import kr.hs.dgsw.stac.semo.widget.`object`.UserObject
+import kr.hs.dgsw.stac.semo.widget.extension.dateFormat
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtraNoFinish
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -43,9 +44,7 @@ class AddActivity : BaseActivity<ActivityAddBinding, AddViewModel>() {
             })
             onSaveEvent.observe(this@AddActivity, Observer {
                 if (imageByteArray.isNotEmpty()) {
-                    val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-                    val imageName = simpleDateFormat.format(Date())
-
+                    val imageName = Date().dateFormat()
                     val mStorageRef = FirebaseStorage.getInstance().reference
                     val riverRef = mStorageRef.child(UserObject.userUid + "/" + imageName)
 
@@ -72,14 +71,16 @@ class AddActivity : BaseActivity<ActivityAddBinding, AddViewModel>() {
                 .set(userMethodModel)
                 .addOnCompleteListener {
                     startActivityWithFinish(applicationContext, MainActivity::class.java)
-                    Toast.makeText(applicationContext, "데이터를 추가했습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "세탁법을 저장했습니다.", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(applicationContext, it.message, Toast.LENGTH_SHORT).show()
                 }
         }
     }
 
     override fun onResume() {
         super.onResume()
-
         imageByteArray = ByteArray(0)
 
         if (ImageObject.byteArray.isNotEmpty()) {

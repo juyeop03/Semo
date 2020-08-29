@@ -17,14 +17,14 @@
         <activity android:name=".view.view.ListActivity" />
         <activity android:name=".view.view.SelectActivity" />
         <activity android:name=".view.view.SignUpActivity" />
-        <activity android:name=".view.view.SignInActivity">
+        <activity android:name=".view.view.SignInActivity" />
+        <activity android:name=".view.view.CameraKitActivity"/>
+        <activity android:name=".view.view.MainActivity"/>
+        <activity android:name=".view.view.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.view.SplashActivity" />
-        <activity android:name=".view.view.CameraKitActivity"/>
-        <activity android:name=".view.view.MainActivity"/>
     </application>
 </manifest>

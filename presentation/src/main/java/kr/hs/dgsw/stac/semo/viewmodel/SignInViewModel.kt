@@ -19,7 +19,6 @@ class SignInViewModel : BaseViewModel() {
     fun googleSignInEvent() {
         onGoogleSignInEvent.call()
     }
-
     fun signUpEvent() {
         onSignUpEvent.call()
     }

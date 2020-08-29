@@ -1,7 +1,35 @@
 <resources>
     <string name="app_name">Semo</string>
+    <string name="app_name2">SEMO</string>
+    <string name="client_id">306321335728-9orb3pfbish4sson8fieag9cc07bd8ru.apps.googleusercontent.com</string>
 
-    <style name="default_web_client_id">
-        306321335728-9orb3pfbish4sson8fieag9cc07bd8ru.apps.googleusercontent.com
-    </style>
+    <string name="text_signIn">로그인</string>
+    <string name="text_signup1">아직 회원이 아니신가요?</string>
+    <string name="text_signup2">회원가입</string>
+    <string name="text_google_signIn">Google로 로그인</string>
+
+    <string name="text_recently1">최근에 추가한 세탁법</string>
+    <string name="text_recently2">최근 내가 추가한 나만의 세탁법</string>
+    <string name="text_myMethod1">내가 저장한 세탁법</string>
+    <string name="text_myMethod2">내가 저장한 나만의 옷 세탁법</string>
+
+    <string name="text_use_camera1">카메라 활용하기</string>
+    <string name="text_use_camera2">카메라를 통해 라벨을 인식합니다.</string>
+    <string name="text_use_list1">보기 선택하기</string>
+    <string name="text_use_list2">아이콘을 보고 직접 선택합니다.</string>
+
+    <string name="text_select_symbol1">해당 세탁 기호를 선택해주세요.</string>
+    <string name="text_select_symbol2">라벨을 확인한 후 해당하는 세탁 표시 기호를 선택해주세요.</string>
+    <string name="text_check_laundry_method">세탁법 확인하기</string>
+
+    <string name="text_info_laundry_method">세탁법 정보</string>
+    <string name="text_save">저장하기</string>
+
+    <string name="text_add_laundrty_method">세탁법 추가</string>
+    <string name="text_laundry_method_title">세탁법 이름</string>
+    <string name="text_laundry_method_content">추가적인 메모</string>
+    <string name="text_add_image">세탁법 이름</string>
+    <string name="text_select_laundry_method">선택된 세탁기호</string>
+    <string name="text_saveMy_laundry_method">나의 세탁법으로 저장하기</string>
+
 </resources>

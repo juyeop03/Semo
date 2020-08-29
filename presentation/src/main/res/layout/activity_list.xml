@@ -36,7 +36,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
-                        android:text="해당 세탁 라벨을 선택해주세요."
+                        android:text="@string/text_select_symbol1"
                         android:textStyle="bold"
                         android:textColor="@android:color/black"/>
 
@@ -45,7 +45,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
                         android:layout_marginTop="5dp"
-                        android:text="라벨을 확인한 후 해당하는 세탁 표시 기호를 선택해주세요." />
+                        android:text="@string/text_select_symbol2" />
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
@@ -140,7 +140,7 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="세탁법 확인하기"
+            android:text="@string/text_check_laundry_method"
             android:textSize="16sp"
             android:onClick="@{() -> viewModel.checkEvent()}"
             android:layout_alignParentBottom="true"

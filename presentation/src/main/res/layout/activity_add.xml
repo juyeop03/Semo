@@ -10,7 +10,7 @@
             type="kr.hs.dgsw.stac.semo.viewmodel.AddViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -35,7 +35,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="세탁법 추가"
+                        android:text="@string/text_add_laundrty_method"
                         android:textColor="@color/mainColor"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -55,7 +55,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="세탁법 이름"
+                        android:text="@string/text_laundry_method_title"
                         android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
@@ -79,7 +79,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="메모"
+                        android:text="@string/text_laundry_method_content"
                         android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
@@ -121,7 +121,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="이미지 등록"
+                            android:text="@string/text_add_image"
                             android:textStyle="bold"
                             android:textColor="@color/mainColor"
                             android:layout_marginTop="10dp"
@@ -133,7 +133,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="선택한 세탁기호"
+                    android:text="@string/text_select_laundry_method"
                     android:textColor="@color/mainColor"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -152,20 +152,18 @@
                     tools:listitem="@layout/item_select_symbol"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="저장하기"
-                    android:textColor="#FFFFFF"
-                    android:onClick="@{() -> viewModel.saveEvent()}"
-                    android:background="@color/mainColor"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginEnd="25dp"
-                    android:layout_marginBottom="25dp"
-                    android:textStyle="bold" />
-
             </LinearLayout>
         </ScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/text_saveMy_laundry_method"
+            android:textColor="#FFFFFF"
+            android:onClick="@{() -> viewModel.saveEvent()}"
+            android:layout_alignParentBottom="true"
+            android:background="@color/mainColor"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 </layout>

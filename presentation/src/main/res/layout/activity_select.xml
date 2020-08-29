@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:text="카메라 활용하기"
+                    android:text="@string/text_use_camera1"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -75,7 +75,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="카메라를 통해 라벨을 인식합니다."
+                    android:text="@string/text_use_camera2"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:text="보기 선택하기"
+                    android:text="@string/text_use_list1"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -121,7 +121,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="아이콘을 보고 직접 선택합니다."
+                    android:text="@string/text_use_list2"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
             </LinearLayout>
