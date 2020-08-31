@@ -5,11 +5,11 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
+import kr.hs.dgsw.stac.semo.widget.`object`.SharedPreferencesManager
 import kr.hs.dgsw.stac.domain.MyLaundryModel
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityMainBinding
 import kr.hs.dgsw.stac.semo.viewmodel.MainViewModel
-import kr.hs.dgsw.stac.semo.widget.`object`.UserObject
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityNoFinish
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtraNoFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -44,7 +44,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private fun getMyMethod() {
         val fireStore = FirebaseFirestore.getInstance()
-        fireStore.collection("userWasher").document(UserObject.userUid).collection("date")
+        fireStore.collection("userWasher").document(SharedPreferencesManager.getUserUid(applicationContext).toString()).collection("date")
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful && task.result?.size() != 0) {

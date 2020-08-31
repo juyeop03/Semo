@@ -1,16 +1,19 @@
 package kr.hs.dgsw.stac.semo.viewmodel
 
+import android.content.Context
+import kr.hs.dgsw.stac.semo.widget.`object`.SharedPreferencesManager
 import kr.hs.dgsw.stac.semo.base.BaseViewModel
 import kr.hs.dgsw.stac.semo.widget.SingleLiveEvent
-import kr.hs.dgsw.stac.semo.widget.`object`.UserObject
 
-class SplashViewModel : BaseViewModel() {
+class SplashViewModel(
+    context: Context
+) : BaseViewModel() {
 
     val onFailEvent = SingleLiveEvent<Unit>()
     val onSuccessEvent = SingleLiveEvent<Unit>()
 
     init {
-        if (UserObject.userUid.isNotEmpty()) onSuccessEvent.call()
+        if (SharedPreferencesManager.getUserUid(context) != null) onSuccessEvent.call()
         else onFailEvent.call()
     }
 }

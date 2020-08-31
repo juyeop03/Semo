@@ -11,11 +11,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
+import kr.hs.dgsw.stac.semo.widget.`object`.SharedPreferencesManager
 import kr.hs.dgsw.stac.semo.R
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivitySignInBinding
 import kr.hs.dgsw.stac.semo.viewmodel.SignInViewModel
-import kr.hs.dgsw.stac.semo.widget.`object`.UserObject
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityNoFinish
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -58,7 +58,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
                 if (task.isSuccessful) {
                     Toast.makeText(applicationContext, "로그인을 성공하였습니다.", Toast.LENGTH_SHORT).show()
 
-                    UserObject.userUid = task.result!!.user!!.uid
+                    SharedPreferencesManager.setUserUid(applicationContext, task.result!!.user!!.uid)
                     startActivityWithFinish(applicationContext, MainActivity::class.java)
                 }
                 else Toast.makeText(applicationContext, "로그인을 실패하였습니다.", Toast.LENGTH_SHORT).show()
@@ -86,8 +86,8 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(applicationContext, "로그인을 성공하였습니다.", Toast.LENGTH_SHORT).show()
+                    SharedPreferencesManager.setUserUid(applicationContext, task.result!!.user!!.uid)
 
-                    UserObject.userUid = task.result!!.user!!.uid
                     setUserData(account, firebaseAuth.uid.toString())
                     startActivityWithFinish(applicationContext, MainActivity::class.java)
                 } else Toast.makeText(applicationContext, "로그인을 실패하였습니다.", Toast.LENGTH_SHORT).show()

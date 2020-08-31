@@ -1,7 +1,6 @@
 package kr.hs.dgsw.stac.semo.view.view
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.View
@@ -13,7 +12,7 @@ import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityCameraKitBinding
 import kr.hs.dgsw.stac.semo.view.dialog.NextDialog
 import kr.hs.dgsw.stac.semo.viewmodel.CameraKitViewModel
-import kr.hs.dgsw.stac.semo.widget.`object`.ImageObject
+import kr.hs.dgsw.stac.semo.widget.`object`.ImageManager
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtra
 import kr.hs.dgsw.stac.semo.widget.tensorflow.Classifier
 import kr.hs.dgsw.stac.semo.widget.tensorflow.TensorFlowImageClassifier
@@ -47,7 +46,7 @@ class CameraKitActivity : BaseActivity<ActivityCameraKitBinding, CameraKitViewMo
                 cameraKitView.captureImage(object : CameraKitView.ImageCallback {
                     override fun onImage(p0: CameraKitView?, p1: ByteArray?) {
                         if (onCameraEvent == 0) {
-                            ImageObject.byteArray = ByteArray(0)
+                            ImageManager.byteArray = ByteArray(0)
 
                             var bitmap = BitmapFactory.decodeByteArray(p1, 0, p1!!.size)
                             bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE, INPUT_SIZE, false)
@@ -66,7 +65,7 @@ class CameraKitActivity : BaseActivity<ActivityCameraKitBinding, CameraKitViewMo
                                 })
                             }
                         } else {
-                            ImageObject.byteArray = p1!!
+                            ImageManager.byteArray = p1!!
                             onBackPressed()
                         }
                     }

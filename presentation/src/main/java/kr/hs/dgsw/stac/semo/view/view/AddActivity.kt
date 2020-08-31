@@ -8,12 +8,12 @@ import androidx.lifecycle.Observer
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_add.*
+import kr.hs.dgsw.stac.semo.widget.`object`.SharedPreferencesManager
 import kr.hs.dgsw.stac.domain.MyLaundryModel
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityAddBinding
 import kr.hs.dgsw.stac.semo.viewmodel.AddViewModel
-import kr.hs.dgsw.stac.semo.widget.`object`.ImageObject
-import kr.hs.dgsw.stac.semo.widget.`object`.UserObject
+import kr.hs.dgsw.stac.semo.widget.`object`.ImageManager
 import kr.hs.dgsw.stac.semo.widget.extension.dateFormat
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtraNoFinish
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
@@ -43,7 +43,7 @@ class AddActivity : BaseActivity<ActivityAddBinding, AddViewModel>() {
                 if (imageByteArray.isNotEmpty()) {
                     val imageName = Date().dateFormat()
                     val mStorageRef = FirebaseStorage.getInstance().reference
-                    val riverRef = mStorageRef.child(UserObject.userUid + "/" + imageName)
+                    val riverRef = mStorageRef.child(SharedPreferencesManager.getUserUid(applicationContext) + "/" + imageName)
 
                     riverRef.putBytes(imageByteArray)
                         .addOnSuccessListener { task ->
@@ -64,10 +64,12 @@ class AddActivity : BaseActivity<ActivityAddBinding, AddViewModel>() {
         with(viewModel) {
             val userMethodModel = MyLaundryModel(date.value!!, title.value!!, content.value!!, imageUrl.value!!, laundryList)
             val fireStore = FirebaseFirestore.getInstance()
-            fireStore.collection("userWasher").document(UserObject.userUid).collection("date").document(date.value!!)
+            fireStore.collection("userWasher").document(SharedPreferencesManager.getUserUid(applicationContext).toString()).collection("date").document(date.value!!)
                 .set(userMethodModel)
                 .addOnCompleteListener {
                     startActivityWithFinish(applicationContext, MainActivity::class.java)
+                    
+                    ImageManager.byteArray = ByteArray(0)
                     Toast.makeText(applicationContext, "세탁법을 저장했습니다.", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener {
@@ -78,10 +80,9 @@ class AddActivity : BaseActivity<ActivityAddBinding, AddViewModel>() {
 
     override fun onResume() {
         super.onResume()
-        imageByteArray = ByteArray(0)
 
-        if (ImageObject.byteArray.isNotEmpty()) {
-            imageByteArray = ImageObject.byteArray
+        if (ImageManager.byteArray.isNotEmpty()) {
+            imageByteArray = ImageManager.byteArray
 
             var bitmap = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
             bitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, false)
