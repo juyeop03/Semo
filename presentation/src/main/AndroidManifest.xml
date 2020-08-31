@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kr.hs.dgsw.stac.semo">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -14,19 +14,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.view.MyLaundryActivity"></activity>
         <activity android:name=".view.view.AddActivity" />
         <activity android:name=".view.view.InfoActivity" />
         <activity android:name=".view.view.ListActivity" />
         <activity android:name=".view.view.SelectActivity" />
         <activity android:name=".view.view.SignUpActivity" />
         <activity android:name=".view.view.SignInActivity" />
-        <activity android:name=".view.view.CameraKitActivity"/>
-        <activity android:name=".view.view.MainActivity"/>
+        <activity android:name=".view.view.CameraKitActivity" />
+        <activity android:name=".view.view.MainActivity" />
         <activity android:name=".view.view.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

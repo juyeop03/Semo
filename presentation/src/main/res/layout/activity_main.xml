@@ -85,17 +85,20 @@
                     android:padding="25dp">
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardView1"
                         android:layout_width="170dp"
                         android:layout_height="325dp"
+                        android:onClick="@{() -> viewModel.firstEvent()}"
                         app:cardBackgroundColor="@android:color/white"
                         app:cardCornerRadius="10dp"
                         app:cardElevation="10dp">
 
                         <ImageView
+                            android:id="@+id/imageView1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/img_laundry1"
+                            tools:src="@drawable/img_laundry1"
                             tools:ignore="ContentDescription" />
 
                     </com.google.android.material.card.MaterialCardView>
@@ -107,19 +110,43 @@
                         android:orientation="vertical">
 
                         <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cardView2"
                             android:layout_width="165dp"
                             android:layout_height="150dp"
+                            android:onClick="@{() -> viewModel.secondEvent()}"
                             app:cardBackgroundColor="@color/mainColor"
                             app:cardCornerRadius="10dp"
-                            app:cardElevation="10dp" />
+                            app:cardElevation="10dp">
+
+                            <ImageView
+                                android:id="@+id/imageView2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                tools:src="@drawable/img_laundry2"
+                                tools:ignore="ContentDescription" />
+
+                        </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cardView3"
                             android:layout_width="165dp"
                             android:layout_height="150dp"
                             android:layout_marginTop="25dp"
+                            android:onClick="@{() -> viewModel.thirdEvent()}"
                             app:cardBackgroundColor="@android:color/white"
                             app:cardCornerRadius="10dp"
-                            app:cardElevation="10dp" />
+                            app:cardElevation="10dp">
+
+                            <ImageView
+                                android:id="@+id/imageView3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                tools:src="@drawable/img_laundry3"
+                                tools:ignore="ContentDescription" />
+
+                        </com.google.android.material.card.MaterialCardView>
 
                     </LinearLayout>
                 </LinearLayout>

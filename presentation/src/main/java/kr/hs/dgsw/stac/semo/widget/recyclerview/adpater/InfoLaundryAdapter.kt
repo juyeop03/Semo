@@ -18,14 +18,7 @@ class InfoLaundryAdapter : RecyclerView.Adapter<InfoLaundryAdapter.ViewHolder>()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            DataBindingUtil.inflate(
-                LayoutInflater.from(parent.context),
-                R.layout.item_info_laundry,
-                parent,
-                false
-            )
-        )
+        return ViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_info_laundry, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
