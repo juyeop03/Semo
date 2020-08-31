@@ -1,6 +1,6 @@
 package kr.hs.dgsw.stac.domain
 
-class UserMethodModel (
+class MyLaundryModel (
     val date: String,
     val title: String,
     val content: String,

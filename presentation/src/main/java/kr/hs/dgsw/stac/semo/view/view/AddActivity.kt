@@ -3,14 +3,12 @@ package kr.hs.dgsw.stac.semo.view.view
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.net.Uri
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_add.*
-import kr.hs.dgsw.stac.domain.UserMethodModel
+import kr.hs.dgsw.stac.domain.MyLaundryModel
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityAddBinding
 import kr.hs.dgsw.stac.semo.viewmodel.AddViewModel
@@ -20,7 +18,6 @@ import kr.hs.dgsw.stac.semo.widget.extension.dateFormat
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtraNoFinish
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
-import java.text.SimpleDateFormat
 import java.util.*
 
 class AddActivity : BaseActivity<ActivityAddBinding, AddViewModel>() {
@@ -65,7 +62,7 @@ class AddActivity : BaseActivity<ActivityAddBinding, AddViewModel>() {
 
     private fun setUserWasher() {
         with(viewModel) {
-            val userMethodModel = UserMethodModel(date.value!!, title.value!!, content.value!!, imageUrl.value!!, laundryList)
+            val userMethodModel = MyLaundryModel(date.value!!, title.value!!, content.value!!, imageUrl.value!!, laundryList)
             val fireStore = FirebaseFirestore.getInstance()
             fireStore.collection("userWasher").document(UserObject.userUid).collection("date").document(date.value!!)
                 .set(userMethodModel)
