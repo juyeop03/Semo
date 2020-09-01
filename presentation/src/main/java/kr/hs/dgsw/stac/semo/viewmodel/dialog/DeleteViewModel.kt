@@ -1,9 +1,9 @@
-package kr.hs.dgsw.stac.semo.viewmodel
+package kr.hs.dgsw.stac.semo.viewmodel.dialog
 
 import kr.hs.dgsw.stac.semo.base.BaseViewModel
 import kr.hs.dgsw.stac.semo.widget.SingleLiveEvent
 
-class NextViewModel : BaseViewModel() {
+class DeleteViewModel : BaseViewModel() {
 
     val onPositiveEvent = SingleLiveEvent<Unit>()
     val onNegativeEvent = SingleLiveEvent<Unit>()

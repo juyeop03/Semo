@@ -1,4 +1,4 @@
-package kr.hs.dgsw.stac.semo.viewmodel
+package kr.hs.dgsw.stac.semo.viewmodel.view
 
 import android.content.Context
 import kr.hs.dgsw.stac.semo.widget.`object`.SharedPreferencesManager

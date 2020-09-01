@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="kr.hs.dgsw.stac.semo.viewmodel.dialog.NextViewModel" />
+            type="kr.hs.dgsw.stac.semo.viewmodel.dialog.DeleteViewModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -30,7 +30,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="인식 완료!"
+                    android:text="정말 세탁법을 삭제하시겠습니까?"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:textColor="@android:color/black" />
@@ -39,7 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="추가적으로 인식할 기호가 존재하시나요?" />
+                    android:text="세탁법을 삭제하면 다시 복구가 불가합니다." />
             </LinearLayout>
 
             <View
@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="그렇습니다"
+                    android:text="확인"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="14sp"
@@ -79,7 +79,7 @@
                     android:textStyle="bold"
                     android:textColor="#FF7878"
                     android:onClick="@{() -> viewModel.negativeEvent()}"
-                    android:text="괜찮습니다" />
+                    android:text="취소" />
             </LinearLayout>
 
         </LinearLayout>

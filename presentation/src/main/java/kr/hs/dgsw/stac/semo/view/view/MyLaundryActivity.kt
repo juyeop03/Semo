@@ -3,12 +3,16 @@ package kr.hs.dgsw.stac.semo.view.view
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_my_laundry.*
 import kr.hs.dgsw.stac.domain.LaundryInfoModel
 import kr.hs.dgsw.stac.domain.MyLaundryModel
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityMyLaundryBinding
-import kr.hs.dgsw.stac.semo.viewmodel.MyLaundryViewModel
+import kr.hs.dgsw.stac.semo.view.dialog.DeleteDialog
+import kr.hs.dgsw.stac.semo.viewmodel.view.MyLaundryViewModel
+import kr.hs.dgsw.stac.semo.widget.`object`.SharedPreferencesManager
+import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MyLaundryActivity : BaseActivity<ActivityMyLaundryBinding, MyLaundryViewModel>() {
@@ -30,6 +34,9 @@ class MyLaundryActivity : BaseActivity<ActivityMyLaundryBinding, MyLaundryViewMo
             onBackEvent.observe(this@MyLaundryActivity, Observer {
                 onBackPressed()
             })
+            onDeleteEvent.observe(this@MyLaundryActivity, Observer {
+                deleteLaundry()
+            })
         }
     }
 
@@ -50,5 +57,23 @@ class MyLaundryActivity : BaseActivity<ActivityMyLaundryBinding, MyLaundryViewMo
                     }
                 }
             }
+    }
+
+    private fun deleteLaundry() {
+        val dialog = DeleteDialog()
+        dialog.show(supportFragmentManager)
+        dialog.onDeleteEvent.observe(this, Observer {
+            val fireStore = FirebaseFirestore.getInstance()
+            fireStore.collection("userWasher").document(SharedPreferencesManager.getUserUid(applicationContext).toString())
+                .collection("date").document(viewModel.myLaundryModel.date)
+                .delete()
+                .addOnSuccessListener {
+                    val mStorageRef = FirebaseStorage.getInstance().reference.storage
+                    val photoRef = mStorageRef.getReferenceFromUrl(viewModel.myLaundryModel.imageUri)
+                    photoRef.delete().addOnSuccessListener {
+                        startActivityWithFinish(applicationContext, MainActivity::class.java)
+                    }
+                }
+        })
     }
 }

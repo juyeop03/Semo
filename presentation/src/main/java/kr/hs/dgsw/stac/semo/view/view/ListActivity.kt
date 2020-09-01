@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityListBinding
-import kr.hs.dgsw.stac.semo.viewmodel.ListViewModel
+import kr.hs.dgsw.stac.semo.viewmodel.view.ListViewModel
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtra
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 

@@ -1,4 +1,4 @@
-package kr.hs.dgsw.stac.semo.viewmodel
+package kr.hs.dgsw.stac.semo.viewmodel.view
 
 import kr.hs.dgsw.stac.semo.R
 import kr.hs.dgsw.stac.semo.base.BaseViewModel

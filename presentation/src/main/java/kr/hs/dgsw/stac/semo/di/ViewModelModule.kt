@@ -1,6 +1,8 @@
 package kr.hs.dgsw.stac.semo.di
 
-import kr.hs.dgsw.stac.semo.viewmodel.*
+import kr.hs.dgsw.stac.semo.viewmodel.dialog.DeleteViewModel
+import kr.hs.dgsw.stac.semo.viewmodel.dialog.NextViewModel
+import kr.hs.dgsw.stac.semo.viewmodel.view.*
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -18,4 +20,5 @@ val viewModelModule = module {
     viewModel { MyLaundryViewModel() }
 
     viewModel { NextViewModel() }
+    viewModel { DeleteViewModel() }
 }

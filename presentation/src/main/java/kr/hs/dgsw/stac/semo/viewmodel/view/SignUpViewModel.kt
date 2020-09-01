@@ -1,9 +1,8 @@
-package kr.hs.dgsw.stac.semo.viewmodel
+package kr.hs.dgsw.stac.semo.viewmodel.view
 
 import androidx.lifecycle.MutableLiveData
 import kr.hs.dgsw.stac.semo.base.BaseViewModel
 import kr.hs.dgsw.stac.semo.widget.SingleLiveEvent
-import java.util.regex.Pattern
 
 class SignUpViewModel: BaseViewModel() {
 

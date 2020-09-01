@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import kr.hs.dgsw.stac.semo.base.BaseDialog
 import kr.hs.dgsw.stac.semo.databinding.DialogNextBinding
-import kr.hs.dgsw.stac.semo.viewmodel.NextViewModel
+import kr.hs.dgsw.stac.semo.viewmodel.dialog.NextViewModel
 import kr.hs.dgsw.stac.semo.widget.SingleLiveEvent
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 

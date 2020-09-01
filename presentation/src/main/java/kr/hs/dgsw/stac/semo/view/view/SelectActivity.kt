@@ -3,7 +3,7 @@ package kr.hs.dgsw.stac.semo.view.view
 import androidx.lifecycle.Observer
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivitySelectBinding
-import kr.hs.dgsw.stac.semo.viewmodel.SelectViewModel
+import kr.hs.dgsw.stac.semo.viewmodel.view.SelectViewModel
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityNoFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 

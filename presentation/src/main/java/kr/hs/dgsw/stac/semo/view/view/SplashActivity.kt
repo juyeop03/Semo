@@ -4,7 +4,7 @@ import android.os.Handler
 import androidx.lifecycle.Observer
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivitySplashBinding
-import kr.hs.dgsw.stac.semo.viewmodel.SplashViewModel
+import kr.hs.dgsw.stac.semo.viewmodel.view.SplashViewModel
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 

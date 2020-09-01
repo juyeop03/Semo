@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="kr.hs.dgsw.stac.semo.viewmodel.ListViewModel" />
+            type="kr.hs.dgsw.stac.semo.viewmodel.view.ListViewModel" />
     </data>
 
     <RelativeLayout

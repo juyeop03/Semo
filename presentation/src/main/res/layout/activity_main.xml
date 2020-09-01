@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="kr.hs.dgsw.stac.semo.viewmodel.MainViewModel" />
+            type="kr.hs.dgsw.stac.semo.viewmodel.view.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

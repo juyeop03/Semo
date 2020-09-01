@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_camera_kit.*
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityCameraKitBinding
 import kr.hs.dgsw.stac.semo.view.dialog.NextDialog
-import kr.hs.dgsw.stac.semo.viewmodel.CameraKitViewModel
+import kr.hs.dgsw.stac.semo.viewmodel.view.CameraKitViewModel
 import kr.hs.dgsw.stac.semo.widget.`object`.ImageManager
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtra
 import kr.hs.dgsw.stac.semo.widget.tensorflow.Classifier

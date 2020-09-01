@@ -15,7 +15,7 @@ import kr.hs.dgsw.stac.semo.widget.`object`.SharedPreferencesManager
 import kr.hs.dgsw.stac.semo.R
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivitySignInBinding
-import kr.hs.dgsw.stac.semo.viewmodel.SignInViewModel
+import kr.hs.dgsw.stac.semo.viewmodel.view.SignInViewModel
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityNoFinish
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel

@@ -9,7 +9,7 @@ import kr.hs.dgsw.stac.semo.widget.`object`.SharedPreferencesManager
 import kr.hs.dgsw.stac.domain.MyLaundryModel
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityMainBinding
-import kr.hs.dgsw.stac.semo.viewmodel.MainViewModel
+import kr.hs.dgsw.stac.semo.viewmodel.view.MainViewModel
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityNoFinish
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtraNoFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel

@@ -6,7 +6,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kr.hs.dgsw.stac.domain.LaundryInfoModel
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityInfoBinding
-import kr.hs.dgsw.stac.semo.viewmodel.InfoViewModel
+import kr.hs.dgsw.stac.semo.viewmodel.view.InfoViewModel
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtra
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 

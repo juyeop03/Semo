@@ -12,7 +12,7 @@ import kr.hs.dgsw.stac.semo.widget.`object`.SharedPreferencesManager
 import kr.hs.dgsw.stac.domain.MyLaundryModel
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityAddBinding
-import kr.hs.dgsw.stac.semo.viewmodel.AddViewModel
+import kr.hs.dgsw.stac.semo.viewmodel.view.AddViewModel
 import kr.hs.dgsw.stac.semo.widget.`object`.ImageManager
 import kr.hs.dgsw.stac.semo.widget.extension.dateFormat
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtraNoFinish

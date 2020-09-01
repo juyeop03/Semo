@@ -1,4 +1,4 @@
-package kr.hs.dgsw.stac.semo.viewmodel
+package kr.hs.dgsw.stac.semo.viewmodel.view
 
 import androidx.lifecycle.MutableLiveData
 import kr.hs.dgsw.stac.domain.LaundryInfoModel
@@ -15,6 +15,7 @@ class MyLaundryViewModel : BaseViewModel() {
     val content = MutableLiveData<String>()
 
     val onBackEvent = SingleLiveEvent<Unit>()
+    val onDeleteEvent = SingleLiveEvent<Unit>()
 
     val laundryInfoModelList = ArrayList<LaundryInfoModel>()
     val infoLaundryAdapter = InfoLaundryAdapter()
@@ -23,7 +24,6 @@ class MyLaundryViewModel : BaseViewModel() {
         title.value = myLaundryModel.title
         content.value = myLaundryModel.content
     }
-
     fun setList() {
         infoLaundryAdapter.setList(laundryInfoModelList)
         infoLaundryAdapter.notifyDataSetChanged()
@@ -31,5 +31,8 @@ class MyLaundryViewModel : BaseViewModel() {
 
     fun backEvent() {
         onBackEvent.call()
+    }
+    fun deleteEvent() {
+        onDeleteEvent.call()
     }
 }

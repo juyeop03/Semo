@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="kr.hs.dgsw.stac.semo.viewmodel.CameraKitViewModel" />
+            type="kr.hs.dgsw.stac.semo.viewmodel.view.CameraKitViewModel" />
     </data>
 
     <RelativeLayout
