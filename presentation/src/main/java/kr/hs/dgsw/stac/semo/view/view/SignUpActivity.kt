@@ -19,6 +19,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
     override fun observerViewModel() {
         with(viewModel) {
             onSuccessEvent.observe(this@SignUpActivity, Observer {
+                Toast.makeText(applicationContext, "처리중입니다, 잠시만 기다려주세요", Toast.LENGTH_SHORT).show()
                 signUp()
             })
             onFailEvent.observe(this@SignUpActivity, Observer {

@@ -47,7 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@={viewModel.email}"
-                    android:hint="아이디"
+                    android:hint="이메일"
                     android:textSize="12sp" />
             </com.google.android.material.textfield.TextInputLayout>
 

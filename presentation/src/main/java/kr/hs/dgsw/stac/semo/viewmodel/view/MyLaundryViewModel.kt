@@ -15,6 +15,7 @@ class MyLaundryViewModel : BaseViewModel() {
     val content = MutableLiveData<String>()
 
     val onBackEvent = SingleLiveEvent<Unit>()
+    val onModifyEvent = SingleLiveEvent<Unit>()
     val onDeleteEvent = SingleLiveEvent<Unit>()
 
     val laundryInfoModelList = ArrayList<LaundryInfoModel>()
@@ -31,6 +32,9 @@ class MyLaundryViewModel : BaseViewModel() {
 
     fun backEvent() {
         onBackEvent.call()
+    }
+    fun modifyEvent() {
+        onModifyEvent.call()
     }
     fun deleteEvent() {
         onDeleteEvent.call()

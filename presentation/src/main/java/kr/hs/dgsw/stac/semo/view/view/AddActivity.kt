@@ -40,6 +40,8 @@ class AddActivity : BaseActivity<ActivityAddBinding, AddViewModel>() {
                 Toast.makeText(applicationContext, "입력한 정보들을 다시 한 번 확인해주세요.", Toast.LENGTH_SHORT).show()
             })
             onSaveEvent.observe(this@AddActivity, Observer {
+                Toast.makeText(applicationContext, "처리중입니다, 잠시만 기다려주세요", Toast.LENGTH_SHORT).show()
+
                 if (imageByteArray.isNotEmpty()) {
                     val imageName = Date().dateFormat()
                     val mStorageRef = FirebaseStorage.getInstance().reference

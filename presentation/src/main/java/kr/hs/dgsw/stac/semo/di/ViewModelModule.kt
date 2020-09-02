@@ -18,6 +18,7 @@ val viewModelModule = module {
     viewModel { InfoViewModel() }
     viewModel { AddViewModel() }
     viewModel { MyLaundryViewModel() }
+    viewModel { ModifyViewModel() }
 
     viewModel { NextViewModel() }
     viewModel { DeleteViewModel() }

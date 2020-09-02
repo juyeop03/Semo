@@ -40,6 +40,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
     override fun observerViewModel() {
         with(viewModel) {
             onSignInEvent.observe(this@SignInActivity, Observer {
+                Toast.makeText(applicationContext, "처리중입니다, 잠시만 기다려주세요", Toast.LENGTH_SHORT).show()
                 signIn()
             })
             onGoogleSignInEvent.observe(this@SignInActivity, Observer {

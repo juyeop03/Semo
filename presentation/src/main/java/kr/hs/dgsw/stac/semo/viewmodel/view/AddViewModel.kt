@@ -28,7 +28,7 @@ class AddViewModel : BaseViewModel() {
         onCameraEvent.call()
     }
     fun saveEvent() {
-        if (title.value != null && content.value != null) onSaveEvent.call()
+        if (!title.value.isNullOrBlank() && !content.value.isNullOrBlank()) onSaveEvent.call()
         else onFailEvent.call()
     }
 }

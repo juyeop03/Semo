@@ -146,6 +146,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:onClick="@{() -> viewModel.modifyEvent()}"
                                 android:text="수정하기"/>
 
                             <Button

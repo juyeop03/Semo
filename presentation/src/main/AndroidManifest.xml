@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.view.MyLaundryActivity"></activity>
+        <activity android:name=".view.view.ModifyActivity"/>
+        <activity android:name=".view.view.MyLaundryActivity"/>
         <activity android:name=".view.view.AddActivity" />
         <activity android:name=".view.view.InfoActivity" />
         <activity android:name=".view.view.ListActivity" />
