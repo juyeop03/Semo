@@ -1,6 +1,7 @@
 package kr.hs.dgsw.stac.semo.viewmodel.view
 
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.FirebaseAuth
 import kr.hs.dgsw.stac.semo.base.BaseViewModel
 import kr.hs.dgsw.stac.semo.widget.SingleLiveEvent
 
@@ -22,4 +23,5 @@ class SignInViewModel : BaseViewModel() {
     fun signUpEvent() {
         onSignUpEvent.call()
     }
+
 }

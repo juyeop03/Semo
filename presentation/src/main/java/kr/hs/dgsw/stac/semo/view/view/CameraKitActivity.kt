@@ -24,7 +24,7 @@ class CameraKitActivity : BaseActivity<ActivityCameraKitBinding, CameraKitViewMo
 
     private lateinit var classifier: Classifier
 
-    private val MODEL_PATH = "model.tflite"
+    private val MODEL_PATH = "model1.tflite"
     private val LABEL_PATH = "labels.txt"
     private val INPUT_SIZE = 224
     private val QUANT = false

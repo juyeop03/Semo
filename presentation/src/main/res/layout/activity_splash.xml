@@ -16,7 +16,6 @@
         tools:context=".view.view.SplashActivity">
 
         <ImageView
-            android:id="@+id/imageView2"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/ic_logo"

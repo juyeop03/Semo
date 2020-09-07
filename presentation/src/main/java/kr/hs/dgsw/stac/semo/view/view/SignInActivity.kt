@@ -16,6 +16,8 @@ import kr.hs.dgsw.stac.semo.R
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivitySignInBinding
 import kr.hs.dgsw.stac.semo.viewmodel.view.SignInViewModel
+import kr.hs.dgsw.stac.semo.widget.extension.longToastMessage
+import kr.hs.dgsw.stac.semo.widget.extension.shortToastMessage
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityNoFinish
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -40,8 +42,8 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
     override fun observerViewModel() {
         with(viewModel) {
             onSignInEvent.observe(this@SignInActivity, Observer {
-                Toast.makeText(applicationContext, "처리중입니다, 잠시만 기다려주세요", Toast.LENGTH_SHORT).show()
                 signIn()
+                setIsLoadingTrue()
             })
             onGoogleSignInEvent.observe(this@SignInActivity, Observer {
                 googleSignIn()
@@ -57,12 +59,16 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
         firebaseAuth.signInWithEmailAndPassword(viewModel.email.value.toString(), viewModel.pw.value.toString())
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(applicationContext, "로그인을 성공하였습니다.", Toast.LENGTH_SHORT).show()
+                    shortToastMessage("로그인을 성공하였습니다.")
+                    viewModel.setIsLoadingFalse()
 
                     SharedPreferencesManager.setUserUid(applicationContext, task.result!!.user!!.uid)
                     startActivityWithFinish(applicationContext, MainActivity::class.java)
                 }
-                else Toast.makeText(applicationContext, "로그인을 실패하였습니다.", Toast.LENGTH_SHORT).show()
+                else {
+                    shortToastMessage("로그인을 실패하였습니다.")
+                    viewModel.setIsLoadingFalse()
+                }
             }
     }
 
@@ -77,7 +83,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
             if (result!!.isSuccess) {
                 val account = result.signInAccount
                 firebaseAuthWithGoogle(account!!)
-            } else Toast.makeText(applicationContext, result.status.toString(), Toast.LENGTH_SHORT).show()
+            } else longToastMessage(result.status.toString())
         }
     }
     private fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
@@ -86,15 +92,12 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(applicationContext, "로그인을 성공하였습니다.", Toast.LENGTH_SHORT).show()
+                    shortToastMessage("로그인을 성공하였습니다.")
                     SharedPreferencesManager.setUserUid(applicationContext, task.result!!.user!!.uid)
 
                     setUserData(account, firebaseAuth.uid.toString())
                     startActivityWithFinish(applicationContext, MainActivity::class.java)
-                } else Toast.makeText(applicationContext, "로그인을 실패하였습니다.", Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener {
-                Toast.makeText(applicationContext, it.message, Toast.LENGTH_SHORT).show()
+                } else shortToastMessage("로그인을 실패하였습니다.")
             }
     }
     private fun setUserData(account: GoogleSignInAccount, uid: String) {
@@ -113,11 +116,8 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
                     }
                     fireStore.collection("user").document(uid)
                         .set(userData)
-                        .addOnSuccessListener {
-                            Toast.makeText(applicationContext, "DB에 데이터를 추가했습니다.", Toast.LENGTH_SHORT).show()
-                        }
                         .addOnFailureListener {
-                            Toast.makeText(applicationContext, it.message, Toast.LENGTH_SHORT).show()
+                            longToastMessage(it.message.toString())
                         }
                 }
             }

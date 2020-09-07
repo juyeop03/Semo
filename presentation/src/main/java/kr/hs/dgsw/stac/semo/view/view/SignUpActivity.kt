@@ -1,12 +1,13 @@
 package kr.hs.dgsw.stac.semo.view.view
 
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivitySignUpBinding
 import kr.hs.dgsw.stac.semo.viewmodel.view.SignUpViewModel
+import kr.hs.dgsw.stac.semo.widget.extension.longToastMessage
+import kr.hs.dgsw.stac.semo.widget.extension.shortToastMessage
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
@@ -19,11 +20,11 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
     override fun observerViewModel() {
         with(viewModel) {
             onSuccessEvent.observe(this@SignUpActivity, Observer {
-                Toast.makeText(applicationContext, "처리중입니다, 잠시만 기다려주세요", Toast.LENGTH_SHORT).show()
                 signUp()
+                setIsLoadingTrue()
             })
             onFailEvent.observe(this@SignUpActivity, Observer {
-                Toast.makeText(applicationContext, "회원가입 형식에 맞게 작성해주시기 바랍니다.", Toast.LENGTH_SHORT).show()
+                shortToastMessage("회원가입 형식에 맞게 작성해주시기 바랍니다.")
             })
         }
     }
@@ -33,13 +34,15 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
         firebaseAuth.createUserWithEmailAndPassword(viewModel.email.value!!, viewModel.pw.value!!)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(applicationContext, "회원가입을 성공했습니다.", Toast.LENGTH_SHORT).show()
+                    shortToastMessage("회원가입을 성공했습니다.")
+                    viewModel.setIsLoadingFalse()
+
                     setUserData(firebaseAuth.uid.toString())
+                    startActivityWithFinish(applicationContext, SignInActivity::class.java)
+                } else {
+                    longToastMessage(task.exception.toString())
+                    viewModel.setIsLoadingFalse()
                 }
-                else Toast.makeText(applicationContext, task.exception.toString(), Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener {
-                Toast.makeText(applicationContext, it.toString(), Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -47,17 +50,13 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
         val fireStore = FirebaseFirestore.getInstance()
         val userData = HashMap<String, Any>()
 
-        userData["email"] = viewModel.email.value!!
+        userData["email"] = viewModel.email.value!!.trim()
         userData["name"] = viewModel.name.value!!
 
         fireStore.collection("user").document(uid)
             .set(userData)
-            .addOnSuccessListener {
-                Toast.makeText(applicationContext, "DB에 데이터를 추가했습니다.", Toast.LENGTH_SHORT).show()
-                startActivityWithFinish(applicationContext, SignInActivity::class.java)
-            }
             .addOnFailureListener {
-                Toast.makeText(applicationContext, it.toString(), Toast.LENGTH_SHORT).show()
+                longToastMessage(it.message.toString())
             }
     }
 }
