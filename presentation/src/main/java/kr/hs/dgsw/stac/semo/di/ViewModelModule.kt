@@ -11,7 +11,7 @@ val viewModelModule = module {
     viewModel { SplashViewModel(androidApplication()) }
     viewModel { SignInViewModel(androidApplication()) }
     viewModel { SignUpViewModel() }
-    viewModel { MainViewModel() }
+    viewModel { MainViewModel(androidApplication()) }
     viewModel { SelectViewModel() }
     viewModel { CameraKitViewModel() }
     viewModel { ListViewModel() }

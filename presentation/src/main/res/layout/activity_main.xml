@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="kr.hs.dgsw.stac.semo.viewmodel.view.MainViewModel" />
@@ -47,6 +48,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_baseline_dehaze_24"
+                        android:onClick="@{() -> viewModel.moreEvent()}"
                         app:tint="@color/mainColor"
                         tools:ignore="ContentDescription" />
                 </LinearLayout>
@@ -77,11 +79,12 @@
 
                 <LinearLayout
                     android:id="@+id/linearLayout3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipChildren="false"
                     android:clipToPadding="false"
                     android:orientation="horizontal"
+                    android:gravity="center"
                     android:padding="25dp">
 
                     <com.google.android.material.card.MaterialCardView
@@ -100,7 +103,6 @@
                             android:scaleType="centerCrop"
                             tools:src="@drawable/img_laundry1"
                             tools:ignore="ContentDescription" />
-
                     </com.google.android.material.card.MaterialCardView>
 
                     <LinearLayout
@@ -125,7 +127,6 @@
                                 android:scaleType="centerCrop"
                                 tools:src="@drawable/img_laundry2"
                                 tools:ignore="ContentDescription" />
-
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
@@ -145,7 +146,6 @@
                                 android:scaleType="centerCrop"
                                 tools:src="@drawable/img_laundry3"
                                 tools:ignore="ContentDescription" />
-
                         </com.google.android.material.card.MaterialCardView>
 
                     </LinearLayout>
@@ -188,16 +188,14 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
                         android:onClick="@{() -> viewModel.addEvent()}"
-                        app:cardBackgroundColor="@color/mainColor"
-                        app:cardCornerRadius="3dp"
-                        app:cardElevation="3dp">
+                        app:cardBackgroundColor="@color/mainColor">
 
                         <ImageView
                             android:layout_width="wrap_content"
-                            android:layout_height="25dp"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_baseline_add_24"
                             app:tint="@android:color/white"
@@ -226,5 +224,18 @@
 
             </LinearLayout>
         </ScrollView>
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:theme="@style/AppTheme.ContentLoadingProgressBar"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            style="?android:attr/progressBarStyle"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
