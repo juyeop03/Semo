@@ -6,11 +6,11 @@ import kr.hs.dgsw.stac.semo.base.BaseViewModel
 import kr.hs.dgsw.stac.semo.widget.SingleLiveEvent
 
 class SplashViewModel(
-    context: Context
+    val context: Context
 ) : BaseViewModel() {
 
-    val onFailEvent = SingleLiveEvent<Unit>()
     val onSuccessEvent = SingleLiveEvent<Unit>()
+    val onFailEvent = SingleLiveEvent<Unit>()
 
     init {
         if (SharedPreferencesManager.getUserUid(context) != null) onSuccessEvent.call()

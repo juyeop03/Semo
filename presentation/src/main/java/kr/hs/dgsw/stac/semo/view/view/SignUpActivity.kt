@@ -1,8 +1,6 @@
 package kr.hs.dgsw.stac.semo.view.view
 
 import androidx.lifecycle.Observer
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivitySignUpBinding
 import kr.hs.dgsw.stac.semo.viewmodel.view.SignUpViewModel
@@ -19,44 +17,19 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
     override fun init() {}
     override fun observerViewModel() {
         with(viewModel) {
-            onSuccessEvent.observe(this@SignUpActivity, Observer {
-                signUp()
-                setIsLoadingTrue()
+            onCompleteEvent.observe(this@SignUpActivity, Observer {
+                shortToastMessage("회원가입을 성공했습니다.")
+                onBackPressed()
             })
-            onFailEvent.observe(this@SignUpActivity, Observer {
-                shortToastMessage("회원가입 형식에 맞게 작성해주시기 바랍니다.")
+            onCompleteErrorEvent.observe(this@SignUpActivity, Observer {
+                shortToastMessage("회원가입을 실패했습니다.")
+            })
+            onErrorEvent.observe(this@SignUpActivity, Observer {
+                shortToastMessage("회원가입 형식에 맞게 작성해주세요.")
+            })
+            onFailureData.observe(this@SignUpActivity, Observer {
+                longToastMessage(it.message.toString())
             })
         }
-    }
-
-    private fun signUp() {
-        val firebaseAuth = FirebaseAuth.getInstance()
-        firebaseAuth.createUserWithEmailAndPassword(viewModel.email.value!!, viewModel.pw.value!!)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    shortToastMessage("회원가입을 성공했습니다.")
-                    viewModel.setIsLoadingFalse()
-
-                    setUserData(firebaseAuth.uid.toString())
-                    startActivityWithFinish(applicationContext, SignInActivity::class.java)
-                } else {
-                    longToastMessage(task.exception.toString())
-                    viewModel.setIsLoadingFalse()
-                }
-            }
-    }
-
-    private fun setUserData(uid: String) {
-        val fireStore = FirebaseFirestore.getInstance()
-        val userData = HashMap<String, Any>()
-
-        userData["email"] = viewModel.email.value!!.trim()
-        userData["name"] = viewModel.name.value!!
-
-        fireStore.collection("user").document(uid)
-            .set(userData)
-            .addOnFailureListener {
-                longToastMessage(it.message.toString())
-            }
     }
 }

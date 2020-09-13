@@ -13,7 +13,7 @@ import kr.hs.dgsw.stac.semo.databinding.ActivityMyLaundryBinding
 import kr.hs.dgsw.stac.semo.view.dialog.DeleteDialog
 import kr.hs.dgsw.stac.semo.viewmodel.view.MyLaundryViewModel
 import kr.hs.dgsw.stac.semo.widget.`object`.SharedPreferencesManager
-import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtraNoFinish
+import kr.hs.dgsw.stac.semo.widget.extension.startActivityExtra
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
@@ -37,7 +37,7 @@ class MyLaundryActivity : BaseActivity<ActivityMyLaundryBinding, MyLaundryViewMo
                 onBackPressed()
             })
             onModifyEvent.observe(this@MyLaundryActivity, Observer {
-                startActivityWithExtraNoFinish(Intent(applicationContext, ModifyActivity::class.java).putExtra("myLaundryModel", myLaundryModel))
+                startActivityExtra(Intent(applicationContext, ModifyActivity::class.java).putExtra("myLaundryModel", myLaundryModel))
             })
             onDeleteEvent.observe(this@MyLaundryActivity, Observer {
                 deleteLaundry()

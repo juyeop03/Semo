@@ -8,7 +8,7 @@ import kr.hs.dgsw.stac.semo.databinding.ActivitySignInBinding
 import kr.hs.dgsw.stac.semo.viewmodel.view.SignInViewModel
 import kr.hs.dgsw.stac.semo.widget.extension.longToastMessage
 import kr.hs.dgsw.stac.semo.widget.extension.shortToastMessage
-import kr.hs.dgsw.stac.semo.widget.extension.startActivityNoFinish
+import kr.hs.dgsw.stac.semo.widget.extension.startActivity
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
@@ -34,7 +34,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
                 startActivityForResult(it, GOOGLE_LOGIN_CODE)
             })
             onSignUpEvent.observe(this@SignInActivity, Observer {
-                startActivityNoFinish(applicationContext, SignUpActivity::class.java)
+                startActivity(applicationContext, SignUpActivity::class.java)
             })
         }
     }

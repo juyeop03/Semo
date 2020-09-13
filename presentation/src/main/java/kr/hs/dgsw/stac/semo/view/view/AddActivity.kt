@@ -15,7 +15,7 @@ import kr.hs.dgsw.stac.semo.databinding.ActivityAddBinding
 import kr.hs.dgsw.stac.semo.viewmodel.view.AddViewModel
 import kr.hs.dgsw.stac.semo.widget.`object`.ImageManager
 import kr.hs.dgsw.stac.semo.widget.extension.dateFormat
-import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtraNoFinish
+import kr.hs.dgsw.stac.semo.widget.extension.startActivityExtra
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import java.util.*
@@ -34,7 +34,7 @@ class AddActivity : BaseActivity<ActivityAddBinding, AddViewModel>() {
     override fun observerViewModel() {
         with(viewModel) {
             onCameraEvent.observe(this@AddActivity, Observer {
-                startActivityWithExtraNoFinish(Intent(applicationContext, CameraKitActivity::class.java).putExtra("onCameraEvent", 1))
+                startActivityExtra(Intent(applicationContext, CameraKitActivity::class.java).putExtra("onCameraEvent", 1))
             })
             onFailEvent.observe(this@AddActivity, Observer {
                 Toast.makeText(applicationContext, "입력한 정보들을 다시 한 번 확인해주세요.", Toast.LENGTH_SHORT).show()

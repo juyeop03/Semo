@@ -4,7 +4,7 @@ import androidx.lifecycle.Observer
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivitySelectBinding
 import kr.hs.dgsw.stac.semo.viewmodel.view.SelectViewModel
-import kr.hs.dgsw.stac.semo.widget.extension.startActivityNoFinish
+import kr.hs.dgsw.stac.semo.widget.extension.startActivity
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class SelectActivity : BaseActivity<ActivitySelectBinding, SelectViewModel>() {
@@ -19,10 +19,10 @@ class SelectActivity : BaseActivity<ActivitySelectBinding, SelectViewModel>() {
                 onBackPressed()
             })
             onCameraEvent.observe(this@SelectActivity, Observer {
-                startActivityNoFinish(applicationContext, CameraKitActivity::class.java)
+                startActivity(applicationContext, CameraKitActivity::class.java)
             })
             onSelectEvent.observe(this@SelectActivity, Observer {
-                startActivityNoFinish(applicationContext, ListActivity::class.java)
+                startActivity(applicationContext, ListActivity::class.java)
             })
         }
     }

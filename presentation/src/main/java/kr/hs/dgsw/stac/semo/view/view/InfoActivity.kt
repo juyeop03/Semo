@@ -7,7 +7,7 @@ import kr.hs.dgsw.stac.domain.LaundryInfoModel
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityInfoBinding
 import kr.hs.dgsw.stac.semo.viewmodel.view.InfoViewModel
-import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtra
+import kr.hs.dgsw.stac.semo.widget.extension.startActivityExtraWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class InfoActivity : BaseActivity<ActivityInfoBinding, InfoViewModel>() {
@@ -27,7 +27,7 @@ class InfoActivity : BaseActivity<ActivityInfoBinding, InfoViewModel>() {
     override fun observerViewModel(){
         with(viewModel) {
             onSaveEvent.observe(this@InfoActivity, Observer {
-                startActivityWithExtra(Intent(applicationContext, AddActivity::class.java).putExtra("laundryList", laundryList))
+                startActivityExtraWithFinish(Intent(applicationContext, AddActivity::class.java).putExtra("laundryList", laundryList))
             })
         }
     }

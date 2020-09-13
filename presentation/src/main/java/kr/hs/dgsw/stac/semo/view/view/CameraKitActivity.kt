@@ -13,7 +13,7 @@ import kr.hs.dgsw.stac.semo.databinding.ActivityCameraKitBinding
 import kr.hs.dgsw.stac.semo.view.dialog.NextDialog
 import kr.hs.dgsw.stac.semo.viewmodel.view.CameraKitViewModel
 import kr.hs.dgsw.stac.semo.widget.`object`.ImageManager
-import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtra
+import kr.hs.dgsw.stac.semo.widget.extension.startActivityExtraWithFinish
 import kr.hs.dgsw.stac.semo.widget.tensorflow.Classifier
 import kr.hs.dgsw.stac.semo.widget.tensorflow.TensorFlowImageClassifier
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -61,7 +61,7 @@ class CameraKitActivity : BaseActivity<ActivityCameraKitBinding, CameraKitViewMo
                                 val dialog = NextDialog()
                                 dialog.show(supportFragmentManager)
                                 dialog.onMoveEvent.observe(this@CameraKitActivity, Observer {
-                                    startActivityWithExtra(Intent(applicationContext, InfoActivity::class.java).putExtra("laundryList", laundryList))
+                                    startActivityExtraWithFinish(Intent(applicationContext, InfoActivity::class.java).putExtra("laundryList", laundryList))
                                 })
                             }
                         } else {

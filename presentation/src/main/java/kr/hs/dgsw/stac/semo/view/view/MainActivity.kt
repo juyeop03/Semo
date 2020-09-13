@@ -10,8 +10,8 @@ import kr.hs.dgsw.stac.domain.MyLaundryModel
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivityMainBinding
 import kr.hs.dgsw.stac.semo.viewmodel.view.MainViewModel
-import kr.hs.dgsw.stac.semo.widget.extension.startActivityNoFinish
-import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithExtraNoFinish
+import kr.hs.dgsw.stac.semo.widget.extension.startActivity
+import kr.hs.dgsw.stac.semo.widget.extension.startActivityExtra
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
@@ -25,19 +25,19 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun observerViewModel() {
         with(viewModel) {
             onAddEvent.observe(this@MainActivity, Observer {
-                startActivityNoFinish(applicationContext, SelectActivity::class.java)
+                startActivity(applicationContext, SelectActivity::class.java)
             })
             myLaundryAdapter.onItemClickEvent.observe(this@MainActivity, Observer {
-                startActivityWithExtraNoFinish(Intent(applicationContext, MyLaundryActivity::class.java).putExtra("myLaundryModel", it))
+                startActivityExtra(Intent(applicationContext, MyLaundryActivity::class.java).putExtra("myLaundryModel", it))
             })
             onFirstEvent.observe(this@MainActivity, Observer {
-                startActivityWithExtraNoFinish(Intent(applicationContext, MyLaundryActivity::class.java).putExtra("myLaundryModel", firstLaundry.value))
+                startActivityExtra(Intent(applicationContext, MyLaundryActivity::class.java).putExtra("myLaundryModel", firstLaundry.value))
             })
             onSecondEvent.observe(this@MainActivity, Observer {
-                startActivityWithExtraNoFinish(Intent(applicationContext, MyLaundryActivity::class.java).putExtra("myLaundryModel", secondLaundry.value))
+                startActivityExtra(Intent(applicationContext, MyLaundryActivity::class.java).putExtra("myLaundryModel", secondLaundry.value))
             })
             onThirdEvent.observe(this@MainActivity, Observer {
-                startActivityWithExtraNoFinish(Intent(applicationContext, MyLaundryActivity::class.java).putExtra("myLaundryModel", thirdLaundry.value))
+                startActivityExtra(Intent(applicationContext, MyLaundryActivity::class.java).putExtra("myLaundryModel", thirdLaundry.value))
             })
         }
     }

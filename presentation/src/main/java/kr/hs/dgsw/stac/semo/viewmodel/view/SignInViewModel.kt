@@ -65,7 +65,6 @@ class SignInViewModel(
         val signInIntent = googleSignInClient.signInIntent
         onActivityResultData.value = signInIntent
     }
-
     fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         firebaseAuth.signInWithCredential(credential)
@@ -86,7 +85,6 @@ class SignInViewModel(
                 onFailureData.value = it
             }
     }
-
     private fun setUserData(account: GoogleSignInAccount, uid: String) {
         val fireStore = FirebaseFirestore.getInstance()
         val userData = HashMap<String, Any>()

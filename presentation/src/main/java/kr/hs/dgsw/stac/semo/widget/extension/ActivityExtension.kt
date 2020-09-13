@@ -5,7 +5,7 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-fun AppCompatActivity.startActivityNoFinish(context: Context, activity: Class<*>) {
+fun AppCompatActivity.startActivity(context: Context, activity: Class<*>) {
     startActivity(Intent(context, activity).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP))
 }
 
@@ -14,13 +14,13 @@ fun AppCompatActivity.startActivityWithFinish(context: Context, activity: Class<
     this.finish()
 }
 
-fun AppCompatActivity.startActivityWithExtra(intent: Intent) {
-    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-    this.finish()
+fun AppCompatActivity.startActivityExtra(intent: Intent) {
+    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP))
 }
 
-fun AppCompatActivity.startActivityWithExtraNoFinish(intent: Intent) {
-    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP))
+fun AppCompatActivity.startActivityExtraWithFinish(intent: Intent) {
+    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+    this.finish()
 }
 
 fun AppCompatActivity.shortToastMessage(message: String) {

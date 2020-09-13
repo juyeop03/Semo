@@ -19,12 +19,12 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
         var runnable : Runnable
 
         with(viewModel) {
-            onFailEvent.observe(this@SplashActivity, Observer {
-                runnable = Runnable { startActivityWithFinish(applicationContext, SignInActivity::class.java) }
-                handler.postDelayed(runnable, 2000)
-            })
             onSuccessEvent.observe(this@SplashActivity, Observer {
                 runnable = Runnable { startActivityWithFinish(applicationContext, MainActivity::class.java) }
+                handler.postDelayed(runnable, 2000)
+            })
+            onFailEvent.observe(this@SplashActivity, Observer {
+                runnable = Runnable { startActivityWithFinish(applicationContext, SignInActivity::class.java) }
                 handler.postDelayed(runnable, 2000)
             })
         }
