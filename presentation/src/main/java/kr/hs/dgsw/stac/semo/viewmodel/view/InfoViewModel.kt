@@ -3,12 +3,12 @@ package kr.hs.dgsw.stac.semo.viewmodel.view
 import kr.hs.dgsw.stac.domain.LaundryInfoModel
 import kr.hs.dgsw.stac.semo.base.BaseViewModel
 import kr.hs.dgsw.stac.semo.widget.SingleLiveEvent
-import kr.hs.dgsw.stac.semo.widget.recyclerview.adpater.InfoLaundryAdapter
+import kr.hs.dgsw.stac.semo.widget.recyclerview.adpater.LaundryInfoAdapter
 
 class InfoViewModel : BaseViewModel() {
 
     val laundryInfoModelList = ArrayList<LaundryInfoModel>()
-    val infoLaundryAdapter = InfoLaundryAdapter()
+    val infoLaundryAdapter = LaundryInfoAdapter()
 
     val onSaveEvent = SingleLiveEvent<Unit>()
 

@@ -26,9 +26,7 @@ class MyLaundryActivity : BaseActivity<ActivityMyLaundryBinding, MyLaundryViewMo
         viewModel.myLaundryModel = intent.getSerializableExtra("myLaundryModel") as MyLaundryModel
         Glide.with(applicationContext).load(viewModel.myLaundryModel.imageUri).into(laundryImage)
 
-        for((idx, laundry) in viewModel.myLaundryModel.laundry.withIndex()) {
-            getLaundryInfo(laundry, idx == viewModel.myLaundryModel.laundry.size - 1)
-        }
+        viewModel.getLaundryInfo()
     }
 
     override fun observerViewModel() {
@@ -42,43 +40,17 @@ class MyLaundryActivity : BaseActivity<ActivityMyLaundryBinding, MyLaundryViewMo
             onDeleteEvent.observe(this@MyLaundryActivity, Observer {
                 deleteLaundry()
             })
+            onCompleteEvent.observe(this@MyLaundryActivity, Observer {
+                startActivityWithFinish(applicationContext, MainActivity::class.java)
+            })
         }
     }
 
-    private fun getLaundryInfo(laundry: String, isLast: Boolean) {
-        val fireStore = FirebaseFirestore.getInstance()
-        fireStore.collection("washerMethod").document(laundry)
-            .get()
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    val title = it.result!!.get("title").toString()
-                    val sub = it.result!!.get("sub").toString()
-
-                    viewModel.laundryInfoModelList.add(LaundryInfoModel(laundry, title, sub))
-
-                    if(isLast) {
-                        viewModel.setData()
-                        viewModel.setList()
-                    }
-                }
-            }
-    }
-
-    private fun deleteLaundry() {
+    fun deleteLaundry() {
         val dialog = DeleteDialog()
         dialog.show(supportFragmentManager)
         dialog.onDeleteEvent.observe(this, Observer {
-            val fireStore = FirebaseFirestore.getInstance()
-            fireStore.collection("userWasher").document(SharedPreferencesManager.getUserUid(applicationContext).toString())
-                .collection("date").document(viewModel.myLaundryModel.date)
-                .delete()
-                .addOnSuccessListener {
-                    val mStorageRef = FirebaseStorage.getInstance().reference.storage
-                    val photoRef = mStorageRef.getReferenceFromUrl(viewModel.myLaundryModel.imageUri)
-                    photoRef.delete().addOnSuccessListener {
-                        startActivityWithFinish(applicationContext, MainActivity::class.java)
-                    }
-                }
+            viewModel.deleteLaundryInfo()
         })
     }
 }

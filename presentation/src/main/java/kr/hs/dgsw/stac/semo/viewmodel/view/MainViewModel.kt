@@ -33,9 +33,11 @@ class MainViewModel(
 
     fun getMyMethod() {
         setIsLoadingTrue()
-        firebaseFireStore.collection("userWasher").document(SharedPreferencesManager.getUserUid(context).toString()).collection("date")
+        firebaseFireStore.collection("userWasher").document(SharedPreferencesManager.getUserUid(context).toString())
+            .collection("date")
             .get()
             .addOnCompleteListener { task ->
+                setIsLoadingFalse()
                 if (task.isSuccessful && task.result?.size() != 0) {
                     for ((idx, document) in task.result!!.withIndex()) {
                         val result = document.data
@@ -48,15 +50,14 @@ class MainViewModel(
                             setList()
                         }
                     }
-                } else setList()
+                }
             }
             .addOnFailureListener {
+                setIsLoadingFalse()
                 onFailureData.value = it
             }
     }
     fun setList() {
-        setIsLoadingFalse()
-
         myLaundryAdapter.setList(myLaundryList)
         myLaundryAdapter.notifyDataSetChanged()
         onRecentEvent.call()

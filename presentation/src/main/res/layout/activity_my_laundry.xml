@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="kr.hs.dgsw.stac.semo.viewmodel.view.MyLaundryViewModel" />
@@ -28,7 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/img_laundry3" />
+                app:srcCompat="@drawable/img_laundry3"
+                tools:ignore="ContentDescription" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,7 +125,7 @@
                             <androidx.recyclerview.widget.RecyclerView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                app:adapter="@{viewModel.infoLaundryAdapter}"
+                                app:adapter="@{viewModel.laundryInfoAdapter}"
                                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                                 tools:listitem="@layout/item_info_laundry"
                                 tools:itemCount="40"/>
@@ -147,21 +149,35 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:onClick="@{() -> viewModel.modifyEvent()}"
-                                android:text="수정하기"/>
+                                android:text="@string/text_modify"
+                                tools:ignore="ButtonStyle" />
 
                             <Button
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:onClick="@{() -> viewModel.deleteEvent()}"
-                                android:text="삭제하기"/>
+                                android:text="@string/text_delete"
+                                tools:ignore="ButtonStyle" />
                         </LinearLayout>
 
                     </LinearLayout>
                 </ScrollView>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.core.widget.ContentLoadingProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:theme="@style/AppTheme.ContentLoadingProgressBar"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

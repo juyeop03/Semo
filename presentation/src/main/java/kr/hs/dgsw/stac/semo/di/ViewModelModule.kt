@@ -17,7 +17,7 @@ val viewModelModule = module {
     viewModel { ListViewModel() }
     viewModel { InfoViewModel() }
     viewModel { AddViewModel() }
-    viewModel { MyLaundryViewModel() }
+    viewModel { MyLaundryViewModel(androidApplication()) }
     viewModel { ModifyViewModel() }
 
     viewModel { NextViewModel() }

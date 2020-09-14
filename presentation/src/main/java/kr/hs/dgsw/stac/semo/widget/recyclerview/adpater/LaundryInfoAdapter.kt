@@ -9,7 +9,7 @@ import kr.hs.dgsw.stac.semo.R
 import kr.hs.dgsw.stac.semo.databinding.ItemInfoLaundryBinding
 import kr.hs.dgsw.stac.semo.widget.recyclerview.viewmodel.InfoLaundryViewModel
 
-class InfoLaundryAdapter : RecyclerView.Adapter<InfoLaundryAdapter.ViewHolder>() {
+class LaundryInfoAdapter : RecyclerView.Adapter<LaundryInfoAdapter.ViewHolder>() {
 
     private var laundryList = ArrayList<LaundryInfoModel>()
 
@@ -68,7 +68,7 @@ class InfoLaundryAdapter : RecyclerView.Adapter<InfoLaundryAdapter.ViewHolder>()
     }
 
     class ViewHolder(val binding: ItemInfoLaundryBinding) : RecyclerView.ViewHolder(binding.root) {
-        private val infoLaundryAdapter = InfoLaundryAdapter()
+        private val infoLaundryAdapter = LaundryInfoAdapter()
         private val viewModel = InfoLaundryViewModel()
 
         fun bind(model: LaundryInfoModel) {

@@ -32,4 +32,7 @@
     <string name="text_select_laundry_method">선택된 세탁기호</string>
     <string name="text_saveMy_laundry_method">나의 세탁법으로 저장하기</string>
 
+    <string name="text_modify">수정하기</string>
+    <string name="text_delete">삭제하기</string>
+
 </resources>
