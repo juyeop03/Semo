@@ -13,9 +13,10 @@ class ImageActivity : BaseActivity<ActivityImageBinding, ImageViewModel>() {
     override val viewModel: ImageViewModel
         get() = getViewModel(ImageViewModel::class)
 
-    override fun init(){
+    override fun init() {
         val imageUri = intent.getStringExtra("imageUri")
         Glide.with(applicationContext).load(imageUri).into(imageView)
     }
+
     override fun observerViewModel() {}
 }
