@@ -31,6 +31,9 @@ class MyLaundryActivity : BaseActivity<ActivityMyLaundryBinding, MyLaundryViewMo
 
     override fun observerViewModel() {
         with(viewModel) {
+            onImageEvent.observe(this@MyLaundryActivity, Observer {
+                startActivityExtra(Intent(applicationContext, ImageActivity::class.java).putExtra("imageUri", myLaundryModel.imageUri))
+            })
             onBackEvent.observe(this@MyLaundryActivity, Observer {
                 onBackPressed()
             })

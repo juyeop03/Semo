@@ -28,6 +28,7 @@ class MyLaundryViewModel(
     val content = MutableLiveData<String>()
     val onFailureData = MutableLiveData<Exception>()
 
+    val onImageEvent = SingleLiveEvent<Unit>()
     val onBackEvent = SingleLiveEvent<Unit>()
     val onModifyEvent = SingleLiveEvent<Unit>()
     val onDeleteEvent = SingleLiveEvent<Unit>()
@@ -79,6 +80,9 @@ class MyLaundryViewModel(
             }
     }
 
+    fun imageEvent() {
+        onImageEvent.call()
+    }
     fun backEvent() {
         onBackEvent.call()
     }
