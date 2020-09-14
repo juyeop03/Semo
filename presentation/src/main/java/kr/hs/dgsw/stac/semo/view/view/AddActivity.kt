@@ -28,13 +28,13 @@ class AddActivity : BaseActivity<ActivityAddBinding, AddViewModel>() {
         get() = getViewModel(AddViewModel::class)
 
     override fun init() {
-        viewModel.laundryList = intent.getStringArrayListExtra("laundryList")!!
+        viewModel.selectLaundryList = intent.getStringArrayListExtra("laundryList")!!
         viewModel.setSelectSymbolList()
     }
     override fun observerViewModel() {
         with(viewModel) {
             onCameraEvent.observe(this@AddActivity, Observer {
-                startActivityExtra(Intent(applicationContext, CameraKitActivity::class.java).putExtra("onCameraEvent", 1))
+                startActivityExtra(Intent(applicationContext, CameraKitActivity::class.java).putExtra("checkCamera", 1))
             })
             onFailEvent.observe(this@AddActivity, Observer {
                 Toast.makeText(applicationContext, "입력한 정보들을 다시 한 번 확인해주세요.", Toast.LENGTH_SHORT).show()
@@ -64,7 +64,7 @@ class AddActivity : BaseActivity<ActivityAddBinding, AddViewModel>() {
 
     private fun setUserWasher() {
         with(viewModel) {
-            val userMethodModel = MyLaundryModel(date.value!!, title.value!!, content.value!!, imageUrl.value!!, laundryList)
+            val userMethodModel = MyLaundryModel(date.value!!, title.value!!, content.value!!, imageUrl.value!!, selectLaundryList)
             val fireStore = FirebaseFirestore.getInstance()
             fireStore.collection("userWasher").document(SharedPreferencesManager.getUserUid(applicationContext).toString()).collection("date").document(date.value!!)
                 .set(userMethodModel)

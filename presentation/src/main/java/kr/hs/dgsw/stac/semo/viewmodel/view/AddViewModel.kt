@@ -7,8 +7,8 @@ import kr.hs.dgsw.stac.semo.widget.recyclerview.adpater.SelectSymbolAdapter
 
 class AddViewModel : BaseViewModel() {
 
+    var selectLaundryList = ArrayList<String>()
     val selectSymbolAdapter = SelectSymbolAdapter()
-    var laundryList = ArrayList<String>()
 
     var date = MutableLiveData<String>()
     var title = MutableLiveData<String>()
@@ -20,7 +20,7 @@ class AddViewModel : BaseViewModel() {
     val onFailEvent = SingleLiveEvent<Unit>()
 
     fun setSelectSymbolList() {
-        selectSymbolAdapter.setList(laundryList)
+        selectSymbolAdapter.setList(selectLaundryList)
         selectSymbolAdapter.notifyDataSetChanged()
     }
 
