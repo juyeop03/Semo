@@ -30,9 +30,13 @@
     <string name="text_laundry_method_content">추가적인 메모</string>
     <string name="text_add_image">이미지 추가</string>
     <string name="text_select_laundry_method">선택된 세탁기호</string>
-    <string name="text_saveMy_laundry_method">나의 세탁법으로 저장하기</string>
+    <string name="text_save_laundry_method">나의 세탁법으로 저장하기</string>
 
     <string name="text_modify">수정하기</string>
     <string name="text_delete">삭제하기</string>
+
+    <string name="text_modify_laundry_method">세탁법 수정</string>
+    <string name="text_change_image">이미지 변경</string>
+    <string name="text_modify_my_method">나의 세탁법 수정하기</string>
 
 </resources>

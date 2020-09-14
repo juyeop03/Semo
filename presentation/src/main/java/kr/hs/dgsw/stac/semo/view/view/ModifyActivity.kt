@@ -15,13 +15,12 @@ import kr.hs.dgsw.stac.semo.databinding.ActivityModifyBinding
 import kr.hs.dgsw.stac.semo.viewmodel.view.ModifyViewModel
 import kr.hs.dgsw.stac.semo.widget.`object`.ImageManager
 import kr.hs.dgsw.stac.semo.widget.`object`.SharedPreferencesManager
+import kr.hs.dgsw.stac.semo.widget.extension.shortToastMessage
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityExtra
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class ModifyActivity : BaseActivity<ActivityModifyBinding, ModifyViewModel>() {
-
-    private var imageByteArray = ByteArray(0)
 
     override val viewModel: ModifyViewModel
         get() = getViewModel(ModifyViewModel::class)
@@ -40,58 +39,11 @@ class ModifyActivity : BaseActivity<ActivityModifyBinding, ModifyViewModel>() {
                 startActivityExtra(Intent(applicationContext, CameraKitActivity::class.java).putExtra("onCameraEvent", 1))
             })
             onFailEvent.observe(this@ModifyActivity, Observer {
-                Toast.makeText(applicationContext, "입력한 정보들을 다시 한 번 확인해주세요.", Toast.LENGTH_SHORT).show()
+                shortToastMessage("입력한 정보들을 다시 한 번 확인해주세요.")
             })
-            onModifyEvent.observe(this@ModifyActivity, Observer {
-                Toast.makeText(applicationContext, "처리중입니다, 잠시만 기다려주세요", Toast.LENGTH_SHORT).show()
-
-                if (imageByteArray.isNotEmpty()) {
-                    val imageName = myLaundryModel.date
-                    val mStorageRef = FirebaseStorage.getInstance().reference
-                    val riverRef = mStorageRef.child(SharedPreferencesManager.getUserUid(applicationContext) + "/" + imageName)
-
-                    riverRef.delete()
-                        .addOnSuccessListener {
-                            val imageName2 = myLaundryModel.date
-                            val riverRef2 = mStorageRef.child(SharedPreferencesManager.getUserUid(applicationContext) + "/" + imageName2)
-
-                            riverRef2.putBytes(imageByteArray)
-                                .addOnSuccessListener { task ->
-                                    task.storage.downloadUrl.addOnSuccessListener { uri ->
-                                        viewModel.date.value = task.storage.name
-                                        viewModel.imageUrl.value = uri.toString()
-                                        modifyUserWasher()
-                                    }
-                                }
-                        }
-                } else {
-                    date.value = myLaundryModel.date
-                    imageUrl.value = myLaundryModel.imageUri
-                    modifyUserWasher()
-                }
+            onSuccessEvent.observe(this@ModifyActivity, Observer {
+                startActivityWithFinish(applicationContext, MainActivity::class.java)
             })
-        }
-    }
-
-    private fun modifyUserWasher() {
-        with(viewModel) {
-            val userMethodModel = MyLaundryModel(date.value!!, title.value!!, content.value!!, imageUrl.value!!, laundryList)
-            val fireStore = FirebaseFirestore.getInstance()
-            fireStore.collection("userWasher").document(SharedPreferencesManager.getUserUid(applicationContext).toString()).collection("date").document(myLaundryModel.date)
-                .delete()
-                .addOnCompleteListener {
-                    fireStore.collection("userWasher").document(SharedPreferencesManager.getUserUid(applicationContext).toString()).collection("date").document(date.value!!)
-                        .set(userMethodModel)
-                        .addOnCompleteListener {
-                            startActivityWithFinish(applicationContext, MainActivity::class.java)
-
-                            ImageManager.byteArray = ByteArray(0)
-                            Toast.makeText(applicationContext, "세탁법을 수정했습니다.", Toast.LENGTH_SHORT).show()
-                        }
-                        .addOnFailureListener {
-                            Toast.makeText(applicationContext, it.message, Toast.LENGTH_SHORT).show()
-                        }
-                }
         }
     }
 
@@ -99,10 +51,10 @@ class ModifyActivity : BaseActivity<ActivityModifyBinding, ModifyViewModel>() {
         super.onResume()
 
         if (ImageManager.byteArray.isNotEmpty()) {
-            imageByteArray = ImageManager.byteArray
+            viewModel.imageByteArray = ImageManager.byteArray
 
-            var bitmap = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
-            bitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, false)
+            var bitmap = BitmapFactory.decodeByteArray(viewModel.imageByteArray, 0, viewModel.imageByteArray.size)
+            bitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, false)
             imageView.setImageBitmap(bitmap)
         }
     }

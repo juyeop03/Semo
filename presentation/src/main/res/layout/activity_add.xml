@@ -158,7 +158,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="@string/text_saveMy_laundry_method"
+            android:text="@string/text_save_laundry_method"
             android:textColor="#FFFFFF"
             android:onClick="@{() -> viewModel.saveEvent()}"
             android:layout_alignParentBottom="true"
