@@ -29,14 +29,11 @@ class CameraKitActivity : BaseActivity<ActivityCameraKitBinding, CameraKitViewMo
     private val INPUT_SIZE = 224
     private val QUANT = false
 
-    private val laundryList = ArrayList<String>()
-    private var onCameraEvent = 0
-
     override val viewModel: CameraKitViewModel
         get() = getViewModel(CameraKitViewModel::class)
 
     override fun init() {
-        onCameraEvent = intent.getIntExtra("onCameraEvent", 0)
+        viewModel.checkCamera = intent.getIntExtra("checkCamera", 0)
         initTensorFlowAndLoadModel()
     }
 
@@ -45,7 +42,7 @@ class CameraKitActivity : BaseActivity<ActivityCameraKitBinding, CameraKitViewMo
             onDetectEvent.observe(this@CameraKitActivity, Observer {
                 cameraKitView.captureImage(object : CameraKitView.ImageCallback {
                     override fun onImage(p0: CameraKitView?, p1: ByteArray?) {
-                        if (onCameraEvent == 0) {
+                        if (checkCamera == 0) {
                             ImageManager.byteArray = ByteArray(0)
 
                             var bitmap = BitmapFactory.decodeByteArray(p1, 0, p1!!.size)

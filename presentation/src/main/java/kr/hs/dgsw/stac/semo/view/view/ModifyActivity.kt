@@ -36,7 +36,7 @@ class ModifyActivity : BaseActivity<ActivityModifyBinding, ModifyViewModel>() {
     override fun observerViewModel() {
         with(viewModel) {
             onCameraEvent.observe(this@ModifyActivity, Observer {
-                startActivityExtra(Intent(applicationContext, CameraKitActivity::class.java).putExtra("onCameraEvent", 1))
+                startActivityExtra(Intent(applicationContext, CameraKitActivity::class.java).putExtra("checkCamera", 1))
             })
             onFailEvent.observe(this@ModifyActivity, Observer {
                 shortToastMessage("입력한 정보들을 다시 한 번 확인해주세요.")
@@ -54,7 +54,7 @@ class ModifyActivity : BaseActivity<ActivityModifyBinding, ModifyViewModel>() {
             viewModel.imageByteArray = ImageManager.byteArray
 
             var bitmap = BitmapFactory.decodeByteArray(viewModel.imageByteArray, 0, viewModel.imageByteArray.size)
-            bitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, false)
+            bitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, false)
             imageView.setImageBitmap(bitmap)
         }
     }
