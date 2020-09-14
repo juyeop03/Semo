@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="kr.hs.dgsw.stac.semo.viewmodel.view.AddViewModel" />
@@ -164,6 +165,15 @@
             android:layout_alignParentBottom="true"
             android:background="@color/mainColor"
             android:textStyle="bold" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:theme="@style/AppTheme.ContentLoadingProgressBar"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
 
     </RelativeLayout>
 </layout>
