@@ -12,10 +12,13 @@
     <string name="text_signUp2">회원가입</string>
     <string name="text_google_signIn">Google로 로그인</string>
 
+    <!--MainActivity-->
     <string name="text_recently1">최근에 추가한 세탁법</string>
-    <string name="text_recently2">최근 내가 추가한 나만의 세탁법</string>
+    <string name="text_recently2">내가 최근에 추가한 세탁법을 확인하세요!</string>
     <string name="text_myMethod1">내가 저장한 세탁법</string>
-    <string name="text_myMethod2">내가 저장한 나만의 옷 세탁법</string>
+    <string name="text_myMethod2">이전에 내가 저장한 세탁법을 확인하세요!</string>
+    <string name="text_no_recently">최근에 추가한 세탁법이 존재하지 않습니다.</string>
+    <string name="text_no_method">내가 저장한 세탁법이 존재하지 않습니다.</string>
 
     <string name="text_use_camera1">카메라 활용하기</string>
     <string name="text_use_camera2">카메라를 통해 라벨을 인식합니다.</string>

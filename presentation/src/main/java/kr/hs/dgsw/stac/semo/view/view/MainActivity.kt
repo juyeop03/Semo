@@ -1,6 +1,7 @@
 package kr.hs.dgsw.stac.semo.view.view
 
 import android.content.Intent
+import android.view.View
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,14 +22,24 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun init() { viewModel.getMyMethod() }
     override fun observerViewModel() {
         with(viewModel) {
+            onEmptyEvent.observe(this@MainActivity, Observer {
+                noRecently_textView.visibility = View.VISIBLE
+                noMethod_textView.visibility = View.VISIBLE
+
+                linearLayout3.visibility = View.GONE
+                linearLayout5.visibility = View.GONE
+            })
             onRecentEvent.observe(this@MainActivity, Observer {
+                linearLayout3.visibility = View.VISIBLE
+                linearLayout5.visibility = View.VISIBLE
+
+                noRecently_textView.visibility = View.GONE
+                noMethod_textView.visibility = View.GONE
+
                 setRecentMethod()
             })
             onAddEvent.observe(this@MainActivity, Observer {
                 startActivity(applicationContext, SelectActivity::class.java)
-            })
-            onMoreEvent.observe(this@MainActivity, Observer {
-                shortToastMessage("추후 기능을 개발하도록 하겠습니다.")
             })
             onFailureData.observe(this@MainActivity, Observer {
                 longToastMessage(it.message.toString())

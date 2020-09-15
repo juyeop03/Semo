@@ -16,12 +16,12 @@ class MainViewModel(
 
     val firebaseFireStore = FirebaseFirestore.getInstance()
 
+    val onEmptyEvent = SingleLiveEvent<Unit>()
     val onRecentEvent = SingleLiveEvent<Unit>()
     val onFirstEvent = SingleLiveEvent<Unit>()
     val onSecondEvent = SingleLiveEvent<Unit>()
     val onThirdEvent = SingleLiveEvent<Unit>()
     val onAddEvent = SingleLiveEvent<Unit>()
-    val onMoreEvent = SingleLiveEvent<Unit>()
 
     val firstLaundry = MutableLiveData<MyLaundryModel>()
     val secondLaundry = MutableLiveData<MyLaundryModel>()
@@ -33,8 +33,7 @@ class MainViewModel(
 
     fun getMyMethod() {
         setIsLoadingTrue()
-        firebaseFireStore.collection("userWasher").document(SharedPreferencesManager.getUserUid(context).toString())
-            .collection("date")
+        firebaseFireStore.collection("userWasher").document(SharedPreferencesManager.getUserUid(context).toString()).collection("date")
             .get()
             .addOnCompleteListener { task ->
                 setIsLoadingFalse()
@@ -43,14 +42,9 @@ class MainViewModel(
                         val result = document.data
                         myLaundryList.add(MyLaundryModel(result["date"].toString(), result["title"].toString(), result["content"].toString(), result["imageUri"].toString(), result["laundry"] as List<String>))
 
-                        if (idx == task.result!!.size() - 1) {
-                            myLaundryAdapter.setList(myLaundryList)
-                            myLaundryAdapter.notifyDataSetChanged()
-
-                            setList()
-                        }
+                        if (idx == task.result!!.size() - 1) setList()
                     }
-                }
+                } else onEmptyEvent.call()
             }
             .addOnFailureListener {
                 setIsLoadingFalse()
@@ -74,8 +68,5 @@ class MainViewModel(
     }
     fun addEvent() {
         onAddEvent.call()
-    }
-    fun moreEvent() {
-        onMoreEvent.call()
     }
 }
