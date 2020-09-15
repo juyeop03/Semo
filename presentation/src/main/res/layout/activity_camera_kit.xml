@@ -19,7 +19,7 @@
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@android:color/white"
+            android:background="@android:color/black"
             android:layout_alignParentTop="true"/>
 
         <com.camerakit.CameraKitView
@@ -41,12 +41,12 @@
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:layout_alignParentBottom="true"
-            android:background="@android:color/white"
+            android:background="@android:color/black"
             android:orientation="horizontal">
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/detectButton"
-                android:layout_width="match_parent"
+                android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:onClick="@{() -> viewModel.detectEvent()}"
                 android:src="@drawable/ic_baseline_radio_button_checked_24"
@@ -54,9 +54,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:tint="@android:color/white"
+                app:tint="@android:color/white"
                 tools:ignore="ContentDescription" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </RelativeLayout>
 </layout>

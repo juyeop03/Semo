@@ -13,6 +13,7 @@ import kr.hs.dgsw.stac.semo.databinding.ActivityCameraKitBinding
 import kr.hs.dgsw.stac.semo.view.dialog.NextDialog
 import kr.hs.dgsw.stac.semo.viewmodel.view.CameraKitViewModel
 import kr.hs.dgsw.stac.semo.widget.`object`.ImageManager
+import kr.hs.dgsw.stac.semo.widget.extension.shortToastMessage
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityExtraWithFinish
 import kr.hs.dgsw.stac.semo.widget.tensorflow.Classifier
 import kr.hs.dgsw.stac.semo.widget.tensorflow.TensorFlowImageClassifier
@@ -51,7 +52,7 @@ class CameraKitActivity : BaseActivity<ActivityCameraKitBinding, CameraKitViewMo
                             val results = classifier.recognizeImage(bitmap)
 
                             if (results[0].title == "null") {
-                                Toast.makeText(applicationContext, "이미지 인식 실패, 다시 촬영해주세요!", Toast.LENGTH_SHORT).show()
+                                shortToastMessage("이미지 인식 실패, 다시 촬영해주세요!")
                             } else {
                                 laundryList.add(results[0].title)
 

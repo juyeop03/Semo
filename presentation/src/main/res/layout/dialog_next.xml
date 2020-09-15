@@ -30,16 +30,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="인식 완료!"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/black" />
+                    android:fontFamily="@font/font_bold"
+                    android:text="@string/text_scan_success1"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="추가적으로 인식할 기호가 존재하시나요?" />
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/font"
+                    android:textSize="12sp"
+                    android:text="@string/text_scan_success2"
+                    android:textColor="#8C8C8C"/>
             </LinearLayout>
 
             <View
@@ -59,10 +62,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="그렇습니다"
+                    android:text="@string/text_positive"
                     android:gravity="center"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
+                    android:fontFamily="@font/font"
                     android:onClick="@{() -> viewModel.positiveEvent()}"
                     android:textColor="@color/mainColor" />
 
@@ -76,10 +78,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textStyle="bold"
                     android:textColor="#FF7878"
+                    android:fontFamily="@font/font"
                     android:onClick="@{() -> viewModel.negativeEvent()}"
-                    android:text="괜찮습니다" />
+                    android:text="@string/text_negative" />
             </LinearLayout>
 
         </LinearLayout>
