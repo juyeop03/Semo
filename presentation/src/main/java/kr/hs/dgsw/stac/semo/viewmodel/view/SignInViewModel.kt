@@ -25,6 +25,7 @@ class SignInViewModel(
     var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     var googleSignInClient: GoogleSignInClient
 
+    val onFailEvent = SingleLiveEvent<Unit>()
     val onCompleteEvent = SingleLiveEvent<Unit>()
     val onCompleteErrorEvent = SingleLiveEvent<Unit>()
     val onSignUpEvent = SingleLiveEvent<Unit>()
@@ -44,19 +45,24 @@ class SignInViewModel(
     }
 
     fun signInEvent() {
-        setIsLoadingTrue()
-        firebaseAuth.signInWithEmailAndPassword(email.value.toString(), pw.value.toString())
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    setIsLoadingFalse()
+        if (checkData()) {
+            setIsLoadingTrue()
+            firebaseAuth.signInWithEmailAndPassword(email.value.toString().trim(), pw.value.toString().trim())
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        setIsLoadingFalse()
 
-                    SharedPreferencesManager.setUserUid(context, task.result!!.user!!.uid)
-                    onCompleteEvent.call()
-                } else {
-                    setIsLoadingFalse()
-                    onCompleteErrorEvent.call()
+                        SharedPreferencesManager.setUserUid(context, task.result!!.user!!.uid)
+                        onCompleteEvent.call()
+                    } else {
+                        setIsLoadingFalse()
+                        onCompleteErrorEvent.call()
+                    }
                 }
-            }
+        } else onFailEvent.call()
+    }
+    fun checkData() : Boolean{
+        return !(email.value.isNullOrEmpty() || pw.value.isNullOrEmpty())
     }
 
     fun googleSignInEvent() {

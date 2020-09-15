@@ -1,8 +1,14 @@
 package kr.hs.dgsw.stac.semo.view.view
 
 import android.content.Intent
+import android.graphics.Color
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
 import androidx.lifecycle.Observer
 import com.google.android.gms.auth.api.Auth
+import kotlinx.android.synthetic.main.activity_sign_in.*
+import kr.hs.dgsw.stac.semo.R
 import kr.hs.dgsw.stac.semo.base.BaseActivity
 import kr.hs.dgsw.stac.semo.databinding.ActivitySignInBinding
 import kr.hs.dgsw.stac.semo.viewmodel.view.SignInViewModel
@@ -17,9 +23,18 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
     override val viewModel: SignInViewModel
         get() = getViewModel(SignInViewModel::class)
 
-    override fun init() {}
+    override fun init() {
+        val appName = resources.getString(R.string.app_name3)
+        val spannableStringBuilder = SpannableStringBuilder(appName)
+        spannableStringBuilder.setSpan(ForegroundColorSpan(resources.getColor(R.color.mainColor)), 10, 12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        appName_textView.text = spannableStringBuilder
+    }
     override fun observerViewModel() {
         with(viewModel) {
+            onFailEvent.observe(this@SignInActivity, Observer {
+                shortToastMessage("아이디 또는 비밀번호를 입력하세요.")
+            })
             onCompleteEvent.observe(this@SignInActivity, Observer {
                 shortToastMessage("로그인을 성공하였습니다.")
                 startActivityWithFinish(applicationContext, MainActivity::class.java)

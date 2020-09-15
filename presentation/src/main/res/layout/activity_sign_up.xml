@@ -29,7 +29,6 @@
                 android:id="@+id/textInputLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints">
@@ -38,13 +37,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@={viewModel.name}"
-                    android:hint="이름" />
+                    android:textSize="14sp"
+                    android:hint="이름"
+                    android:fontFamily="@font/font"
+                    tools:ignore="HardcodedText" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout1">
@@ -53,14 +56,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@={viewModel.email}"
-                    android:hint="이메일" />
+                    android:textSize="14sp"
+                    android:fontFamily="@font/font"
+                    android:hint="이메일"
+                    tools:ignore="HardcodedText" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
@@ -69,15 +75,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@={viewModel.pw}"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/font"
                     android:hint="비밀번호 (6자리 이상)"
-                    android:inputType="textPassword"/>
+                    android:inputType="textPassword"
+                    tools:ignore="HardcodedText" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/button"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:onClick="@{() -> viewModel.signUpEvent()}"
                 app:cardBackgroundColor="#3F8EBF"
                 app:cardCornerRadius="3dp"
@@ -89,7 +98,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/text_signup2"
+                    android:text="@string/text_signUp2"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/font"
                     android:textColor="#FFFFFF" />
             </com.google.android.material.card.MaterialCardView>
 

@@ -1,11 +1,15 @@
 <resources>
     <string name="app_name">Semo</string>
     <string name="app_name2">SEMO</string>
-    <string name="client_id">306321335728-9orb3pfbish4sson8fieag9cc07bd8ru.apps.googleusercontent.com</string>
+    <string name="app_name3">세탁의 모든 것, 세모</string>
 
+    <string name="client_id">306321335728-9orb3pfbish4sson8fieag9cc07bd8ru.apps.googleusercontent.com</string>\
+
+
+    <!--SignInActivity & SignUpActivity-->
     <string name="text_signIn">로그인</string>
-    <string name="text_signup1">아직 회원이 아니신가요?</string>
-    <string name="text_signup2">회원가입</string>
+    <string name="text_signUp1">아직 회원이 아니신가요?</string>
+    <string name="text_signUp2">회원가입</string>
     <string name="text_google_signIn">Google로 로그인</string>
 
     <string name="text_recently1">최근에 추가한 세탁법</string>
