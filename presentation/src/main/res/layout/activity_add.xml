@@ -13,7 +13,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -38,8 +39,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/text_add_laundrty_method"
                         android:textColor="@color/mainColor"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/font_bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -57,8 +58,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/text_laundry_method_title"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp" />
+                        android:textColor="#404040"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/font" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -66,7 +68,10 @@
                         android:text="@={viewModel.title}"
                         android:hint="여름 린넨 원피스 세탁법"
                         android:textSize="12sp"
-                        android:layout_marginTop="5dp"/>
+                        android:textColor="#404040"
+                        android:fontFamily="@font/font"
+                        android:layout_marginTop="5dp"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -81,8 +86,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/text_laundry_method_content"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp" />
+                        android:textColor="#404040"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/font"/>
 
                     <EditText
                         android:layout_width="match_parent"
@@ -90,7 +96,10 @@
                         android:text="@={viewModel.content}"
                         android:hint="메모를 작성해주세요"
                         android:textSize="12sp"
-                        android:layout_marginTop="5dp"/>
+                        android:textColor="#404040"
+                        android:fontFamily="@font/font"
+                        android:layout_marginTop="5dp"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
 
                 <com.google.android.material.card.MaterialCardView
@@ -99,7 +108,7 @@
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="25dp"
                     android:layout_marginEnd="25dp"
-                    android:layout_marginBottom="25dp"
+                    android:layout_marginBottom="35dp"
                     android:onClick="@{() -> viewModel.cameraEvent()}"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="10dp"
@@ -123,8 +132,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/text_add_image"
-                            android:textStyle="bold"
                             android:textColor="@color/mainColor"
+                            android:fontFamily="@font/font"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"/>
 
@@ -134,19 +143,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
                     android:text="@string/text_select_laundry_method"
                     android:textColor="@color/mainColor"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginEnd="25dp" />
+                    android:fontFamily="@font/font_bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
                     android:layout_marginEnd="25dp"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="25dp"
                     android:orientation="horizontal"
                     android:scrollbars="none"
                     app:adapter="@{viewModel.selectSymbolAdapter}"
@@ -156,15 +166,27 @@
             </LinearLayout>
         </ScrollView>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/text_save_laundry_method"
-            android:textColor="#FFFFFF"
-            android:onClick="@{() -> viewModel.saveEvent()}"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="25dp"
             android:layout_alignParentBottom="true"
-            android:background="@color/mainColor"
-            android:textStyle="bold" />
+            android:layout_centerHorizontal="true"
+            android:onClick="@{() -> viewModel.saveEvent()}"
+            app:cardBackgroundColor="@color/mainColor"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/font"
+                android:text="@string/text_save_laundry_method"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.core.widget.ContentLoadingProgressBar
             style="?android:attr/progressBarStyle"
