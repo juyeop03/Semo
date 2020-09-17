@@ -19,7 +19,7 @@
             android:id="@+id/frameLayout1"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@android:color/white"
+            android:background="@android:color/black"
             android:layout_alignParentTop="true"/>
 
         <ImageView
@@ -34,8 +34,8 @@
         <FrameLayout
             android:id="@+id/frameLayout2"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@android:color/white"
+            android:layout_height="90dp"
+            android:background="@android:color/black"
             android:layout_alignParentBottom="true"/>
 
     </RelativeLayout>

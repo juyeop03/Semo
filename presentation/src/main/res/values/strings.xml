@@ -29,10 +29,10 @@
     <string name="text_use_list2">아이콘을 보고 직접\n기호를 선택합니다.</string>
 
     <!--NextDialog-->
-    <string name="text_scan_success1">인식 완료</string>
-    <string name="text_scan_success2">추가적으로 인식할 기호가 존재하시나요?</string>
-    <string name="text_positive">그렇습니다</string>
-    <string name="text_negative">괜찮습니다</string>
+    <string name="text_next_title">인식 완료</string>
+    <string name="text_next_sub">추가적으로 인식할 기호가 존재하시나요?</string>
+    <string name="text_next_positive">그렇습니다</string>
+    <string name="text_next_negative">괜찮습니다</string>
 
     <!--ListActivity-->
     <string name="text_select_symbol1">해당 세탁 기호를 선택해주세요.</string>
@@ -50,6 +50,12 @@
     <string name="text_add_image">이미지 등록</string>
     <string name="text_select_laundry_method">선택된 세탁기호</string>
     <string name="text_save_laundry_method">나의 세탁법으로 저장하기</string>
+
+    <!--DeleteDialog-->
+    <string name="text_delete_title">세탁법을 삭제하시겠습니까?</string>
+    <string name="text_delete_sub">세탁법을 삭제하면 다시 복구가 불가합니다.</string>
+    <string name="text_delete_positive">확인</string>
+    <string name="text_delete_negative">취소</string>
 
     <string name="text_modify">수정하기</string>
     <string name="text_delete">삭제하기</string>

@@ -17,7 +17,7 @@
 
         <LinearLayout
             android:layout_width="300dp"
-            android:layout_height="180dp"
+            android:layout_height="170dp"
             android:orientation="vertical"
             android:gravity="center">
 
@@ -30,16 +30,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="정말 세탁법을 삭제하시겠습니까?"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/black" />
+                    android:text="@string/text_delete_title"
+                    android:fontFamily="@font/font_bold"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="세탁법을 삭제하면 다시 복구가 불가합니다." />
+                    android:text="@string/text_delete_sub"
+                    android:fontFamily="@font/font"
+                    android:textSize="12sp"
+                    android:textColor="#8C8C8C"/>
             </LinearLayout>
 
             <View
@@ -59,10 +62,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="확인"
+                    android:text="@string/text_delete_positive"
                     android:gravity="center"
-                    android:textStyle="bold"
                     android:textSize="14sp"
+                    android:fontFamily="@font/font"
                     android:onClick="@{() -> viewModel.positiveEvent()}"
                     android:textColor="@color/mainColor" />
 
@@ -76,10 +79,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/font"
                     android:textColor="#FF7878"
                     android:onClick="@{() -> viewModel.negativeEvent()}"
-                    android:text="취소" />
+                    android:text="@string/text_delete_negative" />
             </LinearLayout>
 
         </LinearLayout>

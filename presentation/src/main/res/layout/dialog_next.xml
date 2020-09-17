@@ -17,7 +17,7 @@
 
         <LinearLayout
             android:layout_width="300dp"
-            android:layout_height="180dp"
+            android:layout_height="170dp"
             android:orientation="vertical"
             android:gravity="center">
 
@@ -31,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/font_bold"
-                    android:text="@string/text_scan_success1"
+                    android:text="@string/text_next_title"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
@@ -41,7 +41,7 @@
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/font"
                     android:textSize="12sp"
-                    android:text="@string/text_scan_success2"
+                    android:text="@string/text_next_sub"
                     android:textColor="#8C8C8C"/>
             </LinearLayout>
 
@@ -62,8 +62,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/text_positive"
+                    android:text="@string/text_next_positive"
                     android:gravity="center"
+                    android:textSize="14sp"
                     android:fontFamily="@font/font"
                     android:onClick="@{() -> viewModel.positiveEvent()}"
                     android:textColor="@color/mainColor" />
@@ -79,9 +80,10 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textColor="#FF7878"
+                    android:textSize="14sp"
                     android:fontFamily="@font/font"
                     android:onClick="@{() -> viewModel.negativeEvent()}"
-                    android:text="@string/text_negative" />
+                    android:text="@string/text_next_negative" />
             </LinearLayout>
 
         </LinearLayout>
