@@ -1,9 +1,10 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--App-->
     <string name="app_name">Semo</string>
     <string name="app_name2">SEMO</string>
     <string name="app_name3">세탁의 모든 것, 세모</string>
-
-    <string name="client_id">306321335728-9orb3pfbish4sson8fieag9cc07bd8ru.apps.googleusercontent.com</string>
+    <string name="client_id" tools:ignore="TypographyDashes">306321335728-9orb3pfbish4sson8fieag9cc07bd8ru.apps.googleusercontent.com</string>
 
     <!--SignInActivity & SignUpActivity-->
     <string name="text_signIn">로그인</string>
@@ -21,6 +22,7 @@
 
     <!--SelectActivity-->
     <string name="text_select_method">세탁 표시 기호를 선택할 방식을 골라주세요.</string>
+    <string name="text_select_method2">카메라 인식 또는 아이콘 선택 2가지 방식이 존재합니다.</string>
     <string name="text_use_camera1">카메라 활용하기</string>
     <string name="text_use_camera2">카메라를 통해 라벨을\n직접 인식합니다.</string>
     <string name="text_use_list1">보기 선택하기</string>
@@ -32,12 +34,14 @@
     <string name="text_positive">그렇습니다</string>
     <string name="text_negative">괜찮습니다</string>
 
+    <!--ListActivity-->
     <string name="text_select_symbol1">해당 세탁 기호를 선택해주세요.</string>
     <string name="text_select_symbol2">라벨을 확인한 후 해당하는 세탁 표시 기호를 선택해주세요.</string>
     <string name="text_check_laundry_method">세탁법 확인하기</string>
 
+    <!--InfoActivity-->
     <string name="text_info_laundry_method">세탁법 정보</string>
-    <string name="text_save">저장하기</string>
+    <string name="text_save">세탁법 저장하기</string>
 
     <string name="text_add_laundrty_method">세탁법 추가</string>
     <string name="text_laundry_method_title">세탁법 이름</string>

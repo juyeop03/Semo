@@ -19,7 +19,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
         with(viewModel) {
             onCompleteEvent.observe(this@SignUpActivity, Observer {
                 shortToastMessage("회원가입을 성공했습니다.")
-                onBackPressed()
+                startActivityWithFinish(applicationContext, SignInActivity::class.java)
             })
             onCompleteErrorEvent.observe(this@SignUpActivity, Observer {
                 shortToastMessage("회원가입을 실패했습니다.")

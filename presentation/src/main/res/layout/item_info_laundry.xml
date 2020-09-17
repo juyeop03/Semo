@@ -33,7 +33,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
                 android:orientation="vertical">
 
                 <TextView
@@ -42,8 +43,8 @@
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.title}"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/font_bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="물 세탁이 불가합니다."/>
@@ -52,8 +53,11 @@
                     android:id="@+id/sub"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="3dp"
                     android:text="@{viewModel.sub}"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/font"
+                    android:textColor="#8C8C8C"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/title"

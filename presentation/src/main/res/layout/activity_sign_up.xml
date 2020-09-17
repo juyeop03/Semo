@@ -103,7 +103,6 @@
                     android:fontFamily="@font/font"
                     android:textColor="#FFFFFF" />
             </com.google.android.material.card.MaterialCardView>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.core.widget.ContentLoadingProgressBar

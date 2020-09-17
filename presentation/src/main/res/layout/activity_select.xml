@@ -26,8 +26,8 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:src="@drawable/ic_baseline_keyboard_backspace_24"
                 android:onClick="@{() -> viewModel.backEvent()}"
                 app:tint="@color/mainColor"
@@ -47,6 +47,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linearLayout1"/>
 
+        <TextView
+            android:id="@+id/selectMethod2_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_select_method2"
+            android:textSize="12sp"
+            android:textColor="#8C8C8C"
+            android:fontFamily="@font/font"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectMethod_textView"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,7 +70,7 @@
             android:padding="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/selectMethod_textView">
+            app:layout_constraintTop_toBottomOf="@id/selectMethod2_textView">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardView1"
@@ -74,9 +87,9 @@
                 app:layout_constraintTop_toBottomOf="@id/selectMethod_textView">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
@@ -104,6 +117,7 @@
                         android:textColor="@android:color/white"
                         android:textSize="12sp"
                         android:fontFamily="@font/font"
+                        android:layout_gravity="center"
                         android:gravity="center"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -122,9 +136,9 @@
                 app:layout_constraintTop_toBottomOf="@id/selectMethod_textView">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
@@ -151,6 +165,7 @@
                         android:text="@string/text_use_list2"
                         android:textColor="@android:color/white"
                         android:textSize="12sp"
+                        android:layout_gravity="center"
                         android:gravity="center"
                         android:fontFamily="@font/font"/>
                 </LinearLayout>
