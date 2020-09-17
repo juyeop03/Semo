@@ -60,6 +60,7 @@
     <string name="text_modify">수정하기</string>
     <string name="text_delete">삭제하기</string>
 
+    <!--ModifyActivity-->
     <string name="text_modify_laundry_method">세탁법 수정</string>
     <string name="text_change_image">이미지 변경</string>
     <string name="text_modify_my_method">나의 세탁법 수정하기</string>

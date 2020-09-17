@@ -27,6 +27,7 @@ class ModifyActivity : BaseActivity<ActivityModifyBinding, ModifyViewModel>() {
 
     override fun init() {
         viewModel.myLaundryModel = intent.getSerializableExtra("myLaundryModel") as MyLaundryModel
+        Glide.with(applicationContext).load(viewModel.myLaundryModel.imageUri).into(laundryImage)
         Glide.with(applicationContext).load(viewModel.myLaundryModel.imageUri).into(imageView)
 
         viewModel.setData()
@@ -35,6 +36,9 @@ class ModifyActivity : BaseActivity<ActivityModifyBinding, ModifyViewModel>() {
 
     override fun observerViewModel() {
         with(viewModel) {
+            onImageEvent.observe(this@ModifyActivity, Observer {
+                startActivityExtra(Intent(applicationContext, ImageActivity::class.java).putExtra("imageUri", myLaundryModel.imageUri))
+            })
             onCameraEvent.observe(this@ModifyActivity, Observer {
                 startActivityExtra(Intent(applicationContext, CameraKitActivity::class.java).putExtra("checkCamera", 1))
             })
@@ -56,6 +60,7 @@ class ModifyActivity : BaseActivity<ActivityModifyBinding, ModifyViewModel>() {
             var bitmap = BitmapFactory.decodeByteArray(viewModel.imageByteArray, 0, viewModel.imageByteArray.size)
             bitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, false)
             imageView.setImageBitmap(bitmap)
+            laundryImage.setImageBitmap(bitmap)
         }
     }
 }

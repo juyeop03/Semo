@@ -147,18 +147,24 @@
 
                             <Button
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="40dp"
                                 android:layout_weight="1"
+                                android:layout_marginEnd="5dp"
                                 android:onClick="@{() -> viewModel.modifyEvent()}"
                                 android:text="@string/text_modify"
+                                android:textColor="#3F8EBF"
+                                android:background="@drawable/layout_modify_button"
                                 tools:ignore="ButtonStyle" />
 
                             <Button
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="40dp"
                                 android:layout_weight="1"
+                                android:layout_marginStart="5dp"
                                 android:onClick="@{() -> viewModel.deleteEvent()}"
                                 android:text="@string/text_delete"
+                                android:textColor="#FF7878"
+                                android:background="@drawable/layout_delete_button"
                                 tools:ignore="ButtonStyle" />
                         </LinearLayout>
 

@@ -24,6 +24,7 @@ class ModifyViewModel(
     var laundryList = ArrayList<String>()
     val selectSymbolAdapter = SelectSymbolAdapter()
 
+    val onImageEvent = SingleLiveEvent<Unit>()
     val onCameraEvent = SingleLiveEvent<Unit>()
     val onFailEvent = SingleLiveEvent<Unit>()
     val onSuccessEvent = SingleLiveEvent<Unit>()
@@ -44,9 +45,6 @@ class ModifyViewModel(
         selectSymbolAdapter.notifyDataSetChanged()
     }
 
-    fun cameraEvent() {
-        onCameraEvent.call()
-    }
     fun modifyEvent() {
         if (!title.value.isNullOrBlank() && !content.value.isNullOrBlank()) modify()
         else onFailEvent.call()
@@ -74,7 +72,6 @@ class ModifyViewModel(
                 }
         } else modifyUserWasher()
     }
-
     fun modifyUserWasher() {
         val updateData: MutableMap<String, Any> = HashMap()
         updateData["title"] = title.value.toString()
@@ -93,5 +90,9 @@ class ModifyViewModel(
                 setIsLoadingFalse()
                 onFailureData.value = it
             }
+    }
+
+    fun cameraEvent() {
+        onCameraEvent.call()
     }
 }
