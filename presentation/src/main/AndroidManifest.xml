@@ -15,18 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".view.view.ImageActivity" />
-        <activity android:name=".view.view.ModifyActivity" />
-        <activity android:name=".view.view.MyLaundryActivity" />
-        <activity android:name=".view.view.AddActivity" />
-        <activity android:name=".view.view.InfoActivity" />
-        <activity android:name=".view.view.ListActivity" />
-        <activity android:name=".view.view.SelectActivity" />
-        <activity android:name=".view.view.SignUpActivity" />
-        <activity android:name=".view.view.SignInActivity" />
-        <activity android:name=".view.view.CameraKitActivity" />
-        <activity android:name=".view.view.MainActivity" />
-        <activity android:name=".view.view.SplashActivity">
+        <activity android:name=".view.view.ImageActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.view.ModifyActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.view.MyLaundryActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.view.AddActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.view.InfoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.view.ListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.view.SelectActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.view.SignUpActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.view.SignInActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.view.CameraKitActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.view.MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".view.view.SplashActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
