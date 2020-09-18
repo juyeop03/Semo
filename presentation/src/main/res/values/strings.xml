@@ -57,6 +57,7 @@
     <string name="text_delete_positive">확인</string>
     <string name="text_delete_negative">취소</string>
 
+    <!--MyLaundryActivity-->
     <string name="text_modify">수정하기</string>
     <string name="text_delete">삭제하기</string>
 

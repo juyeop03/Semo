@@ -100,7 +100,7 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/mainColor"
                                 android:textSize="20sp"
-                                android:textStyle="bold"
+                                android:fontFamily="@font/font_bold"
                                 android:text="@={viewModel.title}"
                                 tools:text="여름 린넨 원피스 세탁법" />
 
@@ -109,6 +109,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:text="@={viewModel.content}"
+                                android:fontFamily="@font/font"
                                 tools:text="작년 여름에 구매해 옷장 왼쪽에 넣어둔 흰색 린넨 원피스" />
                         </LinearLayout>
 
@@ -153,6 +154,7 @@
                                 android:onClick="@{() -> viewModel.modifyEvent()}"
                                 android:text="@string/text_modify"
                                 android:textColor="#3F8EBF"
+                                android:fontFamily="@font/font"
                                 android:background="@drawable/layout_modify_button"
                                 tools:ignore="ButtonStyle" />
 
@@ -164,6 +166,7 @@
                                 android:onClick="@{() -> viewModel.deleteEvent()}"
                                 android:text="@string/text_delete"
                                 android:textColor="#FF7878"
+                                android:fontFamily="@font/font"
                                 android:background="@drawable/layout_delete_button"
                                 tools:ignore="ButtonStyle" />
                         </LinearLayout>

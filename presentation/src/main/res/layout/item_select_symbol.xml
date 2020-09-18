@@ -13,7 +13,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/img_water1"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="ContentDescription,MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
