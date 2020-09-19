@@ -37,7 +37,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
             })
             onCompleteEvent.observe(this@SignInActivity, Observer {
                 shortToastMessage("로그인을 성공하였습니다.")
-                startActivityWithFinish(applicationContext, MainActivity::class.java)
+                startActivityWithFinish(applicationContext, AppIntroActivity::class.java)
             })
             onCompleteErrorEvent.observe(this@SignInActivity, Observer {
                 shortToastMessage("로그인을 실패하였습니다.")
