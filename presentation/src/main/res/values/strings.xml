@@ -60,6 +60,7 @@
     <!--MyLaundryActivity-->
     <string name="text_modify">수정하기</string>
     <string name="text_delete">삭제하기</string>
+    <string name="text_show_image">이미지 상세보기</string>
 
     <!--ModifyActivity-->
     <string name="text_modify_laundry_method">세탁법 수정</string>

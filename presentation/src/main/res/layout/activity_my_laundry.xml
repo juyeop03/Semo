@@ -58,6 +58,32 @@
                     app:tint="@android:color/white"
                     tools:ignore="ContentDescription" />
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout12"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="110dp"
+                android:layout_gravity="bottom"
+                android:gravity="center|end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/text_show_image"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/font_bold"
+                    android:gravity="center"
+                    tools:ignore="ContentDescription,HardcodedText" />
+            </LinearLayout>
         </FrameLayout>
 
         <FrameLayout
