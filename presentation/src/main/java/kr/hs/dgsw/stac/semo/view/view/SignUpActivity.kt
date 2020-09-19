@@ -9,7 +9,7 @@ import kr.hs.dgsw.stac.semo.widget.extension.shortToastMessage
 import kr.hs.dgsw.stac.semo.widget.extension.startActivityWithFinish
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
+class  SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
 
     override val viewModel: SignUpViewModel
         get() = getViewModel(SignUpViewModel::class)

@@ -97,6 +97,7 @@ class SignInViewModel(
 
         userData["email"] = account.email.toString()
         userData["name"] = account.displayName.toString()
+        userData["recommandName"] = ""
 
         fireStore.collection("user")
             .get()

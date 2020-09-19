@@ -19,6 +19,7 @@ class SignUpViewModel: BaseViewModel() {
     val email = MutableLiveData<String>()
     val pw = MutableLiveData<String>()
     val name = MutableLiveData<String>()
+    val recommandName = MutableLiveData<String>()
     val onFailureData = MutableLiveData<Exception>()
 
     fun signUpEvent() {
@@ -61,6 +62,7 @@ class SignUpViewModel: BaseViewModel() {
         val userData = HashMap<String, Any>()
         userData["email"] = email.value.toString().trim()
         userData["name"] = name.value.toString()
+        userData["recommandName"] = if (recommandName.value.isNullOrBlank()) "" else recommandName.value.toString()
 
         firebaseFireStore.collection("user").document(uid)
             .set(userData)
