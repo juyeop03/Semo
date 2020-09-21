@@ -10,6 +10,7 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { SplashViewModel(androidApplication()) }
     viewModel { SignInViewModel(androidApplication()) }
+    viewModel { AgreementViewModel() }
     viewModel { SignUpViewModel() }
     viewModel { MainViewModel(androidApplication()) }
     viewModel { SelectViewModel() }

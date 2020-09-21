@@ -11,6 +11,12 @@
     <string name="text_signUp1">아직 회원이 아니신가요?</string>
     <string name="text_signUp2">회원가입</string>
     <string name="text_google_signIn">Google로 로그인</string>
+    
+    <string name="text_welcome">환영합니다</string>
+    <string name="text_request_agreement">약관 동의가 필요합니다</string>
+    <string name="text_all_consent">전체 동의</string>
+    <string name="text_person_information">개인정보 취급방침</string>
+    <string name="text_next">다음으로</string>
 
     <!--MainActivity-->
     <string name="text_recently1">최근에 추가한 세탁법</string>

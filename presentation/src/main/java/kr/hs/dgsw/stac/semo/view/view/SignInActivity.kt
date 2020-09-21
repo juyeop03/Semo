@@ -49,7 +49,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding, SignInViewModel>() {
                 startActivityForResult(it, GOOGLE_LOGIN_CODE)
             })
             onSignUpEvent.observe(this@SignInActivity, Observer {
-                startActivity(applicationContext, SignUpActivity::class.java)
+                startActivity(applicationContext, AgreementActivity::class.java)
             })
         }
     }
