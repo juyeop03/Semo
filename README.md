@@ -56,4 +56,4 @@
   - ONE store 2020년 09월 28일 1.0.2 버전을 출시하였습니다.
   
 ## Blog
-  - 네이버 블로그 <a href ="http://blog.naver.com/kjy13299/222112463298" target ="_blank" title ="세탁의 모든 것, 세모 설명보기">세탁의 모든 것, 세모 설명보기.</a>
+  - 네이버 블로그 <a href ="http://blog.naver.com/kjy13299/222112463298" target ="_blank" title ="세탁의 모든 것, 세모 설명보기">세탁의 모든 것, 세모 설명보기</a>
