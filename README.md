@@ -39,10 +39,10 @@
 
 ## UI/UX
 <div>
-<img width="200" src="https://user-images.githubusercontent.com/49600974/96325430-876f7480-1062-11eb-9340-fc5c4cb0ca15.png"></img>
-<img width="200" src="https://user-images.githubusercontent.com/49600974/96325428-850d1a80-1062-11eb-9928-66db01441f30.png"></img>
-<img width="200" src="https://user-images.githubusercontent.com/49600974/96325429-863e4780-1062-11eb-8b6f-4c8fd797ce07.png"></img>
-<img width="200" src="https://user-images.githubusercontent.com/49600974/96325424-80e0fd00-1062-11eb-9f6b-d1342540b15d.png"></img>
+<img width="190" src="https://user-images.githubusercontent.com/49600974/96325430-876f7480-1062-11eb-9340-fc5c4cb0ca15.png"></img>
+<img width="190" src="https://user-images.githubusercontent.com/49600974/96325428-850d1a80-1062-11eb-9928-66db01441f30.png"></img>
+<img width="190" src="https://user-images.githubusercontent.com/49600974/96325429-863e4780-1062-11eb-8b6f-4c8fd797ce07.png"></img>
+<img width="190" src="https://user-images.githubusercontent.com/49600974/96325424-80e0fd00-1062-11eb-9f6b-d1342540b15d.png"></img>
 </div>
 
 ## Google Play
